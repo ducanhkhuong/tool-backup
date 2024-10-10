@@ -1,0 +1,325 @@
+2024-10-09 09:14:28.495 +07:00 [INF] SSH successfully with root@172.16.100.234
+2024-10-09 09:14:31.822 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 09:23:29.593 +07:00 [INF] SSH successfully with :
+User:root
+IP:172.16.100.234
+KeyFilePath:E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase:LumiVn@2021
+Logfile:E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:24:24.371 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 09:24:35.738 +07:00 [INF] SSH successfully with :
+User:ducanhkhuong
+IP:172.24.35.88
+Password:1
+Logfile:E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:25:12.250 +07:00 [INF] SSH: disconnected connection with ducanhkhuong@172.24.35.88
+2024-10-09 09:44:19.200 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:45:01.205 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:46:26.691 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:49:55.352 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:50:47.137 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:51:06.888 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 09:51:22.306 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:51:33.721 +07:00 [INF] SSH: disconnected connection with ducanhkhuong@172.24.35.88
+2024-10-09 09:52:24.756 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:52:47.386 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:52:50.864 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 09:53:04.887 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:58:31.074 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 09:59:54.708 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:04:59.538 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:06:23.800 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:07:40.334 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:13:03.345 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:16:42.071 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:22:00.248 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:24:13.421 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:25:35.662 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:32:04.031 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:36:00.562 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:37:50.397 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:40:20.123 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:45:09.342 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 10:47:30.627 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 10:50:28.221 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:00:16.953 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:00:52.530 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:09:54.170 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:10:27.367 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:10:36.873 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:10:36.882 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:11:56.552 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:12:00.160 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:12:00.174 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:26:06.259 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:26:09.396 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:26:09.412 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:26:12.450 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:26:13.412 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:26:14.094 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:26:14.829 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:26:15.639 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:28:22.127 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:28:25.763 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:32:37.627 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:32:45.470 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:37:41.953 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:38:05.814 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:38:05.829 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 11:38:23.770 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 11:38:26.866 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 11:38:26.876 +07:00 [ERR] Error clearing log file: The process cannot access the file 'E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log' because it is being used by another process.
+2024-10-09 14:01:43.132 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:03:11.059 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 14:04:05.799 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.193
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:04:15.523 +07:00 [INF] SSH: disconnected connection with root@172.16.100.193
+2024-10-09 14:04:48.256 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:05:11.853 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 14:26:57.647 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:28:26.875 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 14:33:22.093 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:35:24.912 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:35:44.088 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 14:44:52.921 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:50:59.602 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 14:54:38.228 +07:00 [ERR] SCP: Error during upload: Empty path name is not legal.
+2024-10-09 14:55:43.431 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 15:07:24.118 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 15:14:30.239 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 15:18:30.450 +07:00 [INF] SSH: disconnected connection with root@172.16.100.234
+2024-10-09 15:18:52.152 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 15:19:09.897 +07:00 [INF] SSH: disconnected connection with ducanhkhuong@172.24.35.88
+2024-10-09 15:22:24.319 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 15:29:53.991 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 17:40:18.141 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 17:40:32.642 +07:00 [INF] SSH: disconnected connection with ducanhkhuong@172.24.35.88
+2024-10-09 18:07:28.019 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-09 18:11:24.506 +07:00 [INF] SSH successfully with :
+User : ducanhkhuong
+IP : 172.24.35.88
+Password : 1
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log

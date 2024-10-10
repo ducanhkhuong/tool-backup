@@ -1,0 +1,10 @@
+E:\test C#\tool-backup\tool-backup\bin\Release\tool-backup.exe.config
+E:\test C#\tool-backup\tool-backup\bin\Release\tool-backup.exe
+E:\test C#\tool-backup\tool-backup\bin\Release\tool-backup.pdb
+E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.csproj.AssemblyReference.cache
+E:\test C#\tool-backup\tool-backup\obj\Release\tool_backup.Form1.resources
+E:\test C#\tool-backup\tool-backup\obj\Release\tool_backup.Properties.Resources.resources
+E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.csproj.GenerateResource.cache
+E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.csproj.CoreCompileInputs.cache
+E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.exe
+E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.pdb
