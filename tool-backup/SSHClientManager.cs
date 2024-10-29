@@ -61,7 +61,7 @@ namespace tool_backup
                 client.Connect();
                 return true;
             }
-            catch (System.Exception ex)
+            catch (System.Exception)
             {
                 return false;
             }

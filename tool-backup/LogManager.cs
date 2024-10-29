@@ -5,12 +5,12 @@ using Serilog;
 
 namespace tool_backup
 {
-    public class LogClientManager
+    public class LogManager
     {
         private readonly string logFilePath;
         private long lastReadPosition;
 
-        public LogClientManager(string logFilePath)
+        public LogManager(string logFilePath)
         {
             this.logFilePath = logFilePath;
             lastReadPosition = 0;

@@ -1,15 +1,17 @@
-﻿using System;
+﻿
+
+using System;
 using System.Diagnostics;
 using System.Linq;
+using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
 using System.Threading;
 using System.Threading.Tasks;
 
-
 namespace tool_backup
 {
-    public class NetworkScanner
+    public class NetworkManager
     {
         public void ScanNetworks(Action<string> logAction, string ipRange, CancellationToken cancellationToken)
         {
@@ -25,7 +27,7 @@ namespace tool_backup
 
                     foreach (var ip in ipv4Addresses)
                     {
-                        if (cancellationToken.IsCancellationRequested) 
+                        if (cancellationToken.IsCancellationRequested)
                         {
                             return;
                         }
@@ -38,8 +40,7 @@ namespace tool_backup
             }
         }
 
-
-        public void ScanIpRange(string ipRange, Action<string> logAction, CancellationToken cancellationToken)
+        private void ScanIpRange(string ipRange, Action<string> logAction, CancellationToken cancellationToken)
         {
             var parts = ipRange.Split('.');
             if (parts.Length != 4)
@@ -62,7 +63,8 @@ namespace tool_backup
                 if (PingIp(currentIp))
                 {
                     string macAddress = GetMacAddress(currentIp);
-                    logAction($"Ping success: {currentIp} ----- MAC Address: {macAddress}");
+                    string hostname = GetHostname(currentIp);
+                    logAction($"Ping success: {currentIp} -- MAC: {macAddress} -- Hostname: {hostname}");
                 }
                 else
                 {
@@ -71,15 +73,13 @@ namespace tool_backup
             }
         }
 
-
-
         private bool PingIp(string ipAddress)
         {
             using (var ping = new Ping())
             {
                 try
                 {
-                    var reply = ping.Send(ipAddress, 500);
+                    var reply = ping.Send(ipAddress, 50);
                     return reply.Status == IPStatus.Success;
                 }
                 catch
@@ -89,18 +89,17 @@ namespace tool_backup
             }
         }
 
-
         private string GetMacAddress(string ipAddress)
         {
             var macAddress = "N/A";
-            var startInfo = new System.Diagnostics.ProcessStartInfo("arp", $"-a {ipAddress}")
+            var startInfo = new ProcessStartInfo("arp", $"-a {ipAddress}")
             {
                 RedirectStandardOutput = true,
                 UseShellExecute = false,
                 CreateNoWindow = true,
             };
 
-            using (var process = System.Diagnostics.Process.Start(startInfo))
+            using (var process = Process.Start(startInfo))
             {
                 using (var reader = process.StandardOutput)
                 {
@@ -119,6 +118,19 @@ namespace tool_backup
                 }
             }
             return macAddress;
+        }
+
+        private string GetHostname(string ipAddress)
+        {
+            try
+            {
+                var hostEntry = Dns.GetHostEntry(ipAddress);
+                return hostEntry.HostName;
+            }
+            catch (SocketException)
+            {
+                return "Unknown";
+            }
         }
     }
 }

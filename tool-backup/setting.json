@@ -1,0 +1,26 @@
+
+{
+  "MT7688": {
+    "username": "root",
+    "key"     : "LumiVn@2021",
+    "pathhome": "/home",
+    "pathDB"  : "/hcg1/",
+    "pathlog" : "/tmp/log/"
+  },
+
+  "AI-V2": {
+    "username": "nano",
+    "key"     : "",
+    "pathhome": "/home/nano",
+    "pathDB"  : "/var/cache/smarthome/hcg1",
+    "pathlog" : "/smarthome/log"
+  },
+
+  "AI-V3": {
+    "username": "pi",
+    "key"     : "",
+    "pathhome": "/home/pi",
+    "pathDB"  : "/var/cache/smarthome/hcg1",
+    "pathlog" : "/smarthome/log"
+  }
+}

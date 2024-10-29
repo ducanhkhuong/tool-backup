@@ -323,3 +323,63 @@ User : ducanhkhuong
 IP : 172.24.35.88
 Password : 1
 Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-11 13:47:52.550 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.234
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-24 19:08:04.973 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.53
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-24 19:08:29.856 +07:00 [INF] SSH: disconnected connection with root@172.16.100.53
+2024-10-26 16:58:53.749 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.56
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-26 16:59:41.574 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
+2024-10-26 17:01:41.037 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.56
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-29 10:05:37.606 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.72
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-29 10:08:07.402 +07:00 [INF] SSH: disconnected connection with root@172.16.100.72
+2024-10-29 10:45:26.234 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.53
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-29 10:46:31.249 +07:00 [INF] SSH: disconnected connection with root@172.16.100.53
+2024-10-29 10:51:46.415 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.56
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-29 10:53:59.855 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
+2024-10-29 11:09:41.047 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.56
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-29 11:12:01.383 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.56
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
+2024-10-29 11:12:50.153 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
