@@ -32,9 +32,11 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.ConnectDevice_Passphare = new System.Windows.Forms.TextBox();
             this.ConnectDevice_SSH = new System.Windows.Forms.Button();
+            this.comboBoxOptions = new System.Windows.Forms.ComboBox();
             this.ConnectDevice_ExitSSH = new System.Windows.Forms.Button();
             this.ConnectDevice_Status = new System.Windows.Forms.Button();
             this.ConnectDevice_CheckKeyfile = new System.Windows.Forms.CheckBox();
@@ -54,13 +56,13 @@
             this.cmd_input = new System.Windows.Forms.TextBox();
             this.check_cmd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.Scan_IP_textbox = new System.Windows.Forms.TextBox();
             this.Scan_btn_network = new System.Windows.Forms.Button();
-            this.comboBoxOptions = new System.Windows.Forms.ComboBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -72,9 +74,11 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.groupBox1.Controls.Add(this.label3);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.ConnectDevice_Passphare);
             this.groupBox1.Controls.Add(this.ConnectDevice_SSH);
+            this.groupBox1.Controls.Add(this.comboBoxOptions);
             this.groupBox1.Controls.Add(this.ConnectDevice_ExitSSH);
             this.groupBox1.Controls.Add(this.ConnectDevice_Status);
             this.groupBox1.Controls.Add(this.ConnectDevice_CheckKeyfile);
@@ -92,11 +96,21 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connect Device";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(18, 22);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(45, 16);
+            this.label3.TabIndex = 12;
+            this.label3.Text = "Type :";
+            // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(13, 143);
+            this.label1.Location = new System.Drawing.Point(16, 181);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(79, 16);
             this.label1.TabIndex = 8;
@@ -104,11 +118,13 @@
             // 
             // ConnectDevice_Passphare
             // 
+            this.ConnectDevice_Passphare.Enabled = false;
             this.ConnectDevice_Passphare.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectDevice_Passphare.Location = new System.Drawing.Point(130, 140);
+            this.ConnectDevice_Passphare.Location = new System.Drawing.Point(101, 176);
             this.ConnectDevice_Passphare.Name = "ConnectDevice_Passphare";
             this.ConnectDevice_Passphare.Size = new System.Drawing.Size(211, 24);
             this.ConnectDevice_Passphare.TabIndex = 10;
+            this.ConnectDevice_Passphare.UseSystemPasswordChar = true;
             // 
             // ConnectDevice_SSH
             // 
@@ -120,6 +136,17 @@
             this.ConnectDevice_SSH.Text = "SSH";
             this.ConnectDevice_SSH.UseVisualStyleBackColor = true;
             this.ConnectDevice_SSH.Click += new System.EventHandler(this.ConnectDevice_SSH_Click);
+            // 
+            // comboBoxOptions
+            // 
+            this.comboBoxOptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBoxOptions.FormattingEnabled = true;
+            this.comboBoxOptions.Location = new System.Drawing.Point(101, 16);
+            this.comboBoxOptions.Name = "comboBoxOptions";
+            this.comboBoxOptions.Size = new System.Drawing.Size(211, 26);
+            this.comboBoxOptions.TabIndex = 11;
+            this.comboBoxOptions.SelectedIndexChanged += new System.EventHandler(this.comboBoxOptions_SelectedIndexChanged);
             // 
             // ConnectDevice_ExitSSH
             // 
@@ -135,7 +162,7 @@
             // ConnectDevice_Status
             // 
             this.ConnectDevice_Status.BackColor = System.Drawing.SystemColors.Window;
-            this.ConnectDevice_Status.Location = new System.Drawing.Point(347, 24);
+            this.ConnectDevice_Status.Location = new System.Drawing.Point(352, 18);
             this.ConnectDevice_Status.Margin = new System.Windows.Forms.Padding(0);
             this.ConnectDevice_Status.Name = "ConnectDevice_Status";
             this.ConnectDevice_Status.Size = new System.Drawing.Size(22, 23);
@@ -145,7 +172,7 @@
             // ConnectDevice_CheckKeyfile
             // 
             this.ConnectDevice_CheckKeyfile.AutoSize = true;
-            this.ConnectDevice_CheckKeyfile.Location = new System.Drawing.Point(347, 102);
+            this.ConnectDevice_CheckKeyfile.Location = new System.Drawing.Point(352, 142);
             this.ConnectDevice_CheckKeyfile.Name = "ConnectDevice_CheckKeyfile";
             this.ConnectDevice_CheckKeyfile.Size = new System.Drawing.Size(18, 17);
             this.ConnectDevice_CheckKeyfile.TabIndex = 11;
@@ -154,17 +181,17 @@
             // 
             // ConnectDevice_Username
             // 
+            this.ConnectDevice_Username.Enabled = false;
             this.ConnectDevice_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectDevice_Username.Location = new System.Drawing.Point(130, 24);
+            this.ConnectDevice_Username.Location = new System.Drawing.Point(101, 57);
             this.ConnectDevice_Username.Name = "ConnectDevice_Username";
             this.ConnectDevice_Username.Size = new System.Drawing.Size(211, 24);
             this.ConnectDevice_Username.TabIndex = 9;
-            this.ConnectDevice_Username.Text = "root";
             // 
             // ConnectDevice_KeyFile
             // 
             this.ConnectDevice_KeyFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectDevice_KeyFile.Location = new System.Drawing.Point(130, 101);
+            this.ConnectDevice_KeyFile.Location = new System.Drawing.Point(101, 137);
             this.ConnectDevice_KeyFile.Name = "ConnectDevice_KeyFile";
             this.ConnectDevice_KeyFile.Size = new System.Drawing.Size(211, 24);
             this.ConnectDevice_KeyFile.TabIndex = 9;
@@ -172,7 +199,7 @@
             // ConnectDevice_Ip_index1
             // 
             this.ConnectDevice_Ip_index1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectDevice_Ip_index1.Location = new System.Drawing.Point(130, 62);
+            this.ConnectDevice_Ip_index1.Location = new System.Drawing.Point(101, 98);
             this.ConnectDevice_Ip_index1.MaxLength = 20;
             this.ConnectDevice_Ip_index1.Name = "ConnectDevice_Ip_index1";
             this.ConnectDevice_Ip_index1.Size = new System.Drawing.Size(211, 24);
@@ -182,7 +209,7 @@
             // 
             this.ConnectDevice_label_Keyfile.AutoSize = true;
             this.ConnectDevice_label_Keyfile.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectDevice_label_Keyfile.Location = new System.Drawing.Point(11, 101);
+            this.ConnectDevice_label_Keyfile.Location = new System.Drawing.Point(19, 142);
             this.ConnectDevice_label_Keyfile.Name = "ConnectDevice_label_Keyfile";
             this.ConnectDevice_label_Keyfile.Size = new System.Drawing.Size(56, 16);
             this.ConnectDevice_label_Keyfile.TabIndex = 7;
@@ -192,7 +219,7 @@
             // 
             this.ConnectDevice_label_Ip.AutoSize = true;
             this.ConnectDevice_label_Ip.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectDevice_label_Ip.Location = new System.Drawing.Point(11, 62);
+            this.ConnectDevice_label_Ip.Location = new System.Drawing.Point(19, 103);
             this.ConnectDevice_label_Ip.Name = "ConnectDevice_label_Ip";
             this.ConnectDevice_label_Ip.Size = new System.Drawing.Size(25, 16);
             this.ConnectDevice_label_Ip.TabIndex = 7;
@@ -202,7 +229,7 @@
             // 
             this.ConnectDevice_label_Username.AutoSize = true;
             this.ConnectDevice_label_Username.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.ConnectDevice_label_Username.Location = new System.Drawing.Point(11, 27);
+            this.ConnectDevice_label_Username.Location = new System.Drawing.Point(19, 62);
             this.ConnectDevice_label_Username.Name = "ConnectDevice_label_Username";
             this.ConnectDevice_label_Username.Size = new System.Drawing.Size(76, 16);
             this.ConnectDevice_label_Username.TabIndex = 6;
@@ -236,7 +263,7 @@
             // SCP_Download
             // 
             this.SCP_Download.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SCP_Download.Location = new System.Drawing.Point(211, 213);
+            this.SCP_Download.Location = new System.Drawing.Point(346, 91);
             this.SCP_Download.Name = "SCP_Download";
             this.SCP_Download.Size = new System.Drawing.Size(101, 31);
             this.SCP_Download.TabIndex = 7;
@@ -247,7 +274,7 @@
             // SCP_Upload
             // 
             this.SCP_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SCP_Upload.Location = new System.Drawing.Point(211, 176);
+            this.SCP_Upload.Location = new System.Drawing.Point(211, 91);
             this.SCP_Upload.Name = "SCP_Upload";
             this.SCP_Upload.Size = new System.Drawing.Size(101, 31);
             this.SCP_Upload.TabIndex = 8;
@@ -281,15 +308,16 @@
             // cmd_input
             // 
             this.cmd_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_input.Location = new System.Drawing.Point(6, 27);
+            this.cmd_input.Location = new System.Drawing.Point(6, 21);
+            this.cmd_input.Multiline = true;
             this.cmd_input.Name = "cmd_input";
-            this.cmd_input.Size = new System.Drawing.Size(225, 24);
+            this.cmd_input.Size = new System.Drawing.Size(225, 26);
             this.cmd_input.TabIndex = 10;
             // 
             // check_cmd
             // 
             this.check_cmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_cmd.Location = new System.Drawing.Point(237, 25);
+            this.check_cmd.Location = new System.Drawing.Point(237, 21);
             this.check_cmd.Name = "check_cmd";
             this.check_cmd.Size = new System.Drawing.Size(75, 26);
             this.check_cmd.TabIndex = 9;
@@ -300,6 +328,8 @@
             // groupBox5
             // 
             this.groupBox5.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.groupBox5.Controls.Add(this.label4);
+            this.groupBox5.Controls.Add(this.textBox1);
             this.groupBox5.Controls.Add(this.dataGridView1);
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.Scan_IP_textbox);
@@ -312,17 +342,31 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Scan";
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(432, 25);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(63, 18);
+            this.label4.TabIndex = 16;
+            this.label4.Text = "Search :";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(501, 21);
+            this.textBox1.Multiline = true;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(194, 26);
+            this.textBox1.TabIndex = 15;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
             // dataGridView1
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Location = new System.Drawing.Point(9, 68);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
@@ -360,24 +404,11 @@
             this.Scan_btn_network.UseVisualStyleBackColor = true;
             this.Scan_btn_network.Click += new System.EventHandler(this.Scan_btn_network_Click);
             // 
-            // comboBoxOptions
-            // 
-            this.comboBoxOptions.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxOptions.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBoxOptions.FormattingEnabled = true;
-            this.comboBoxOptions.Location = new System.Drawing.Point(73, 27);
-            this.comboBoxOptions.Name = "comboBoxOptions";
-            this.comboBoxOptions.Size = new System.Drawing.Size(239, 26);
-            this.comboBoxOptions.TabIndex = 11;
-            this.comboBoxOptions.SelectedIndexChanged += new System.EventHandler(this.comboBoxOptions_SelectedIndexChanged);
-            // 
             // groupBox3
             // 
             this.groupBox3.BackColor = System.Drawing.SystemColors.MenuBar;
-            this.groupBox3.Controls.Add(this.label3);
             this.groupBox3.Controls.Add(this.SCP_Upload);
             this.groupBox3.Controls.Add(this.SCP_Download);
-            this.groupBox3.Controls.Add(this.comboBoxOptions);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(401, 12);
             this.groupBox3.Name = "groupBox3";
@@ -385,16 +416,6 @@
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Option";
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(6, 30);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(45, 16);
-            this.label3.TabIndex = 12;
-            this.label3.Text = "Type :";
             // 
             // Form1
             // 
@@ -425,7 +446,6 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -461,6 +481,8 @@
         private System.Windows.Forms.TextBox cmd_input;
         private System.Windows.Forms.CheckBox ConnectDevice_CheckKeyfile;
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
 

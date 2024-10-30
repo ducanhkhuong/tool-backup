@@ -90,7 +90,6 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="JsonManager.cs" />
     <Compile Include="LogManager.cs" />
     <Compile Include="NetworkManager.cs" />
     <Compile Include="OptionManager.cs" />

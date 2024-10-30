@@ -11,37 +11,46 @@ using System.Windows.Forms;
 using Serilog;
 using System.IO;
 using tool_backup;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
-using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
 using Renci.SshNet;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Bson;
 
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using static System.Net.Mime.MediaTypeNames;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 namespace tool_backup
 {
     public partial class Form1 : Form
     {
         
-        private SSHClientManager    sshManager_key;
-        private SCPClientManager    scpManager_key;
-        private LogManager          logManager;
-        private NetworkManager      networkManager;
-        private OptionManager       optionManager;
+        private SSHClientManager            sshManager_key;
+        private SCPClientManager            scpManager_key;
+        private LogManager                  logManager;
+        private NetworkManager              networkManager;
+        private OptionManager               optionManager;
+        private JsonManager                 jsonManager;
+        private Config                      config;
         private System.Windows.Forms.Timer logUpdateTimer;
 
-
+        //data log-file and timer-update
         string logFileName = "tool-backup.log";
         string logFilePath = "";
         string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-
-
-        string username;
+        
+        //data SSH
         string ip;
-        string passphrase;
-        string keyFilePath ;
+        string keyFilePath;
 
-
+        //data JSON
+        string username_JSON;
+        string key_JSON;
+        string pathhome_JSON;
+        string pathDB_JSON;
+        string pathLog_JSON;
+        string start_JSON;
+        string stop_JSON;
+        
         public Form1()
         {
             InitializeComponent();
@@ -50,23 +59,26 @@ namespace tool_backup
             networkManager   = new NetworkManager(dataGridView1);
             logManager       = new LogManager(logFilePath);
             optionManager    = new OptionManager();
-
+            jsonManager      = new JsonManager();
+            LoadOptions();
+            comboBoxOptions.SelectedIndexChanged += comboBoxOptions_SelectedIndexChanged;
             logUpdateTimer.Interval = 50;
             logUpdateTimer.Tick += timer1_Tick;
             logUpdateTimer.Start();
 
+        }
+
+        private void LoadOptions()
+        {
             optionManager.AddItem("MT7688", "MT7688");
-            optionManager.AddItem("AI-V2",  "AI-V2");
-            optionManager.AddItem("AI-V3",  "AI-V3");
+            optionManager.AddItem("AI-V2", "AI-V2");
+            optionManager.AddItem("AI-V3", "AI-V3");
             comboBoxOptions.DataSource = optionManager.GetItems();
         }
 
         void autoload_disconected()
         {
             ConnectDevice_Status.BackColor = Color.Red;
-            ConnectDevice_CheckKeyfile.Checked = false;
-            ConnectDevice_KeyFile.Enabled      = false;
-            ConnectDevice_Passphare.Enabled    = false;
         }
 
         void autoload_connected()
@@ -77,78 +89,103 @@ namespace tool_backup
         private void Form1_Load(object sender, EventArgs e)
         {
             autoload_disconected();
-            
-            //CHECK JSON
-            //JsonManager jsonReader = new JsonManager();
-            //jsonReader.ConfigReader("setting.json");
-            //try
-            //{
-            //    Config config = jsonReader.ReadConfig();
-            //    Console.WriteLine($"Username: {config.AIV2.username}\n" +
-            //                    $"Path Home : {config.AIV2.pathhome}\n" +
-            //                    $"Keyfile   : {config.AIV2.key}\n"      +
-            //                    $"Path DB   : {config.AIV2.pathDB}\n"   +
-            //                    $"Path Log  : {config.AIV2.pathlog}");
-            //}
-            //catch (Exception ex)
-            //{
-            //    Console.WriteLine($"Lỗi: {ex.Message}");
-            //}
-            //
         }
 
         //CHECK-OPTION
         private void comboBoxOptions_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (comboBoxOptions.SelectedItem is ComboBoxItem selectedItem)
+            var selectedItem = (ComboBoxItem)comboBoxOptions.SelectedItem;
+            if (selectedItem != null)
             {
-                string value = optionManager.GetSelectedValue(selectedItem);
-                Console.WriteLine(value);
+                string selectedValue = optionManager.GetSelectedValue(selectedItem);
+                LoadConfig(selectedValue);
+            }
+        }
+        private void LoadConfig(string selectedValue)
+        {
+            try
+            {
+                jsonManager.ConfigReader("setting.json");
+                config = jsonManager.ReadConfig();
+
+                AIConfig selectedConfig = null;
+                switch (selectedValue)
+                {
+                    case "MT7688":
+                        selectedConfig = config.MT;
+                        break;
+                    case "AI-V2":
+                        selectedConfig = config.AI_V2;
+                        break;
+                    case "AI-V3":
+                        selectedConfig = config.AI_V3;
+                        break;
+                }
+
+                if (selectedConfig != null)
+                {
+
+                    username_JSON = selectedConfig.username;
+                    key_JSON      = selectedConfig.key;
+                    pathhome_JSON = selectedConfig.pathhome;
+                    pathDB_JSON   = selectedConfig.pathDB;
+                    pathLog_JSON  = selectedConfig.pathlog;
+                    stop_JSON     = selectedConfig.stop;
+                    start_JSON    = selectedConfig.start;
+
+                    ConnectDevice_Username.Text = username_JSON;
+                    ConnectDevice_Passphare.Text = key_JSON;
+
+                }  
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error loading config: {ex.Message}");
             }
         }
 
-        //CHECK-TYPE-SSH(KEY)
+        //OPEN-KEY-FILE
         private void ConnectDevice_CheckKeyfile_CheckedChanged(object sender, EventArgs e)
         {
             string key;
-            if (ConnectDevice_CheckKeyfile.Checked)
+            try
             {
-                OpenFileDialog openFileDialog = new OpenFileDialog
+                
+                if (ConnectDevice_CheckKeyfile.Checked)
                 {
-                    Title =  "Select a File",
-                    Filter = "All Files (*.*)|*.*"
-                };
+                    OpenFileDialog openFileDialog = new OpenFileDialog
+                    {
+                        Title =  "Select a File",
+                        Filter = "All Files (*.*)|*.*"
+                    };
 
-                if (openFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                        key = openFileDialog.FileName;
-                        ConnectDevice_KeyFile.Text = key;
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                            key = openFileDialog.FileName;
+                            ConnectDevice_KeyFile.Text = key;
+                    }
                 }
-                ConnectDevice_KeyFile.Enabled   = true;
-                ConnectDevice_Passphare.Enabled = true;
             }
-            else
+            catch (Exception)
             {
-                ConnectDevice_KeyFile.Enabled   = false;
-                ConnectDevice_Passphare.Enabled = false;
+                key = "";
             }
+
         }
 
         //SSH
         private void ConnectDevice_SSH_Click(object sender, EventArgs e)
         {
-            username    = ConnectDevice_Username .Text.Trim();
             ip          = ConnectDevice_Ip_index1.Text.Trim();
-            passphrase  = ConnectDevice_Passphare.Text.Trim();
             keyFilePath = ConnectDevice_KeyFile  .Text.Trim();
 
-            sshManager_key = new SSHClientManager(ip, username, keyFilePath, passphrase);
+            sshManager_key = new SSHClientManager(ip, username_JSON, keyFilePath, key_JSON);
             if (sshManager_key.Connect())
             {
                 try
                 {
                     sshManager_key.Connect();
-                    Log.Information($"SSH successfully with :\nUser : {username}\nIP : {ip}\nKeyFilePath : {keyFilePath}\nPassphrase : {passphrase}");
+                    Log.Information($"SSH successfully with :\nUser : {username_JSON}\nIP : {ip}\nKeyFilePath : {keyFilePath}\nPassphrase : {key_JSON}");
                     autoload_connected();
                 }
                 catch (Exception ex)
@@ -166,7 +203,7 @@ namespace tool_backup
             {
                 autoload_disconected();
                 sshManager_key.Disconnect();
-                Log.Information("SSH: disconnected connection with " + username + "@" + ip);
+                Log.Information("SSH: disconnected connection with " + username_JSON + "@" + ip);
             }
             logManager.ClearLog(Log_app);
         }
@@ -199,7 +236,7 @@ namespace tool_backup
             string remoteFilePath = @"";
             string localFilePath  = @"";
             //key
-            scpManager_key = new SCPClientManager(ip, username, keyFilePath, passphrase);
+            scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
             if (scpManager_key.DownloadFile(remoteFilePath, localFilePath))
             {
                 Log.Information("SCP : downloaded successfully!");
@@ -211,20 +248,19 @@ namespace tool_backup
         private void SCP_Upload_Click(object sender, EventArgs e)
         {
             string localFilePath =  @"";
-            string remoteFilePath = @"/testtool/noise.txt";
+            string remoteFilePath = @"";
 
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Title = "Select a File",
                 Filter = "All Files (*.*)|*.*"
             };
-
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 localFilePath = openFileDialog.FileName;
             }
             //key
-            scpManager_key = new SCPClientManager(ip, username, keyFilePath, passphrase);
+            scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
             if (scpManager_key.UploadFile(localFilePath, remoteFilePath))
             {
                 Log.Information("SCP : uploaded successfully with key!");
@@ -232,15 +268,21 @@ namespace tool_backup
         }
 
 
-
+        private bool isScanning = false;
         //SCAN IP & NETWORK
         private async void Scan_btn_network_Click(object sender, EventArgs e)
         {
+            if (isScanning)
+            {
+                return;
+            }
             Scan_btn_network.Enabled = false;
+            isScanning = true;
             string ipRange = Scan_IP_textbox.Text.Trim();
             await Task.Run(() => 
                 networkManager.ScanNetworks(ipRange)
             );
+            isScanning = false;
             Scan_btn_network.Enabled = true;
         }
 
@@ -253,6 +295,16 @@ namespace tool_backup
             {
                 sshManager_key.Disconnect();
             }
+        }
+
+
+
+
+        //SEARCH BY MAC
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            string searchValue = textBox1.Text.Trim();
+            networkManager.dgvManager.SearchByMac(searchValue);
         }
     }
 }

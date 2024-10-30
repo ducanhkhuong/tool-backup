@@ -14,7 +14,7 @@ namespace tool_backup
 
     public class NetworkManager
     {
-        private DataGridViewManager dgvManager;
+        public DataGridViewManager dgvManager;
 
         public NetworkManager(DataGridView dataGridView)
         {
@@ -23,43 +23,26 @@ namespace tool_backup
 
         public void ScanNetworks(string ipRange)
         {
-            var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
-
-            foreach (var network in networkInterfaces)
-            {
-                if (network.OperationalStatus == OperationalStatus.Up)
-                {
-                    var ipProperties = network.GetIPProperties();
-                    var ipv4Addresses = ipProperties.UnicastAddresses
-                        .Where(ip => ip.Address.AddressFamily == AddressFamily.InterNetwork);
-
-                    foreach (var ip in ipv4Addresses)
-                    {
-                        //($"Network: {network.Name}, IP: {ip.Address}");
-                        ScanIpRange(ipRange);
-                    }
-                }
-            }
+            //quét ip không quan tâm đến các giao diện mạng
+            ScanIpRange(ipRange); 
         }
 
         private async void ScanIpRange(string ipRange){
             var parts = ipRange.Split('.');
             if (parts.Length != 4)
             {
-                //("Invalid IP range format. Use 'xxx.xxx.xxx.xxx'.");
                 return;
             }
 
             var baseIp = $"{parts[0]}.{parts[1]}.{parts[2]}.";
             var tasks = new Task[255];
             var scannedIps = new HashSet<string>();
-
+            dgvManager.Clear();
             for (int i = 0; i < 255; i++)
             {
                 string currentIp = baseIp + (i + 1);
                 if (scannedIps.Contains(currentIp))
                 {
-                    //($"Skipping already scanned IP: {currentIp}");
                     continue;
                 }
                 scannedIps.Add(currentIp);
@@ -70,12 +53,10 @@ namespace tool_backup
                     {
                         string macAddress = GetMacAddress(currentIp);
                         string hostname = GetHostname(currentIp);
-                        //($"Ping success: {currentIp} -- MAC: {macAddress} -- Hostname: {hostname}");
                         dgvManager.AddRow(currentIp, macAddress, hostname);
                     }
                     else
                     {
-                        //($"Ping failed: {currentIp}");
                         dgvManager.AddRow(currentIp, "", "");
                     }
                 });
@@ -84,10 +65,12 @@ namespace tool_backup
             try
             {
                 await Task.WhenAll(tasks);
+                MessageBox.Show("successfully scanner !");
             }
             catch (Exception)
             {
                 ;
+                MessageBox.Show("Error scanner");
             }
         }
 
@@ -149,8 +132,9 @@ namespace tool_backup
                 var hostEntry = Dns.GetHostEntry(ipAddress);
                 return hostEntry.HostName;
             }
-            catch (SocketException)
+            catch (SocketException ex)
             {
+                Console.WriteLine($"Failed to resolve hostname for {ipAddress}. Error: {ex.Message}");
                 return "Unknown";
             }
         }

@@ -395,3 +395,21 @@ IP : 172.16.100.80
 KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
 Passphrase : LumiVn@2021
 2024-10-30 13:42:37.484 +07:00 [INF] SSH: disconnected connection with root@172.16.100.80
+2024-10-30 15:13:14.062 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.80
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+2024-10-30 15:13:44.773 +07:00 [INF] SSH: disconnected connection with root@172.16.100.80
+2024-10-30 15:23:24.654 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.60
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+2024-10-30 15:24:04.485 +07:00 [INF] SSH: disconnected connection with root@172.16.100.60
+2024-10-30 16:49:54.888 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.80
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+2024-10-30 16:50:01.334 +07:00 [INF] SSH: disconnected connection with root@172.16.100.80

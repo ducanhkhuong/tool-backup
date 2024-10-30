@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿
+using System;
 using System.Windows.Forms;
 
 namespace tool_backup
@@ -43,6 +40,7 @@ namespace tool_backup
             }
         }
 
+
         public void Clear()
         {
             if (dataGridView.InvokeRequired)
@@ -57,5 +55,24 @@ namespace tool_backup
                 dataGridView.Rows.Clear();
             }
         }
+
+
+        public void SearchByMac(string searchText)
+        {
+            searchText = searchText.ToLower();
+            foreach (DataGridViewRow row in dataGridView.Rows)
+            {
+                string macAddress = row.Cells[1].Value?.ToString().ToLower();
+                if (!string.IsNullOrEmpty(macAddress) && macAddress.Contains(searchText))
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+            }
+        }
     }
 }
+
