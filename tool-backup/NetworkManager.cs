@@ -1,19 +1,27 @@
 ﻿
-
 using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
-using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace tool_backup
 {
+
     public class NetworkManager
     {
-        public void ScanNetworks(Action<string> logAction, string ipRange, CancellationToken cancellationToken)
+        private DataGridViewManager dgvManager;
+
+        public NetworkManager(DataGridView dataGridView)
+        {
+            dgvManager = new DataGridViewManager(dataGridView);
+        }
+
+        public void ScanNetworks(string ipRange)
         {
             var networkInterfaces = NetworkInterface.GetAllNetworkInterfaces();
 
@@ -27,59 +35,73 @@ namespace tool_backup
 
                     foreach (var ip in ipv4Addresses)
                     {
-                        if (cancellationToken.IsCancellationRequested)
-                        {
-                            return;
-                        }
-
-                        logAction($"Network: {network.Name}, IP: {ip.Address}");
-
-                        ScanIpRange(ipRange, logAction, cancellationToken);
+                        //($"Network: {network.Name}, IP: {ip.Address}");
+                        ScanIpRange(ipRange);
                     }
                 }
             }
         }
 
-        private void ScanIpRange(string ipRange, Action<string> logAction, CancellationToken cancellationToken)
-        {
+        private async void ScanIpRange(string ipRange){
             var parts = ipRange.Split('.');
             if (parts.Length != 4)
             {
-                logAction("Invalid IP range format. Use 'xxx.xxx.xxx.xxx'.");
+                //("Invalid IP range format. Use 'xxx.xxx.xxx.xxx'.");
                 return;
             }
 
             var baseIp = $"{parts[0]}.{parts[1]}.{parts[2]}.";
+            var tasks = new Task[255];
+            var scannedIps = new HashSet<string>();
 
-            for (int i = 1; i <= 255; i++)
+            for (int i = 0; i < 255; i++)
             {
-                if (cancellationToken.IsCancellationRequested)
+                string currentIp = baseIp + (i + 1);
+                if (scannedIps.Contains(currentIp))
                 {
-                    break;
+                    //($"Skipping already scanned IP: {currentIp}");
+                    continue;
                 }
+                scannedIps.Add(currentIp);
 
-                string currentIp = baseIp + i;
+                tasks[i] = Task.Run(async () =>
+                {
+                    if (await PingIpAsync(currentIp))
+                    {
+                        string macAddress = GetMacAddress(currentIp);
+                        string hostname = GetHostname(currentIp);
+                        //($"Ping success: {currentIp} -- MAC: {macAddress} -- Hostname: {hostname}");
+                        dgvManager.AddRow(currentIp, macAddress, hostname);
+                    }
+                    else
+                    {
+                        //($"Ping failed: {currentIp}");
+                        dgvManager.AddRow(currentIp, "", "");
+                    }
+                });
+            }
 
-                if (PingIp(currentIp))
-                {
-                    string macAddress = GetMacAddress(currentIp);
-                    string hostname = GetHostname(currentIp);
-                    logAction($"Ping success: {currentIp} -- MAC: {macAddress} -- Hostname: {hostname}");
-                }
-                else
-                {
-                    logAction($"Ping failed: {currentIp}");
-                }
+            try
+            {
+                await Task.WhenAll(tasks);
+            }
+            catch (Exception)
+            {
+                ;
             }
         }
 
-        private bool PingIp(string ipAddress)
+
+  
+
+        private async Task<bool> PingIpAsync(string ipAddress)
         {
             using (var ping = new Ping())
             {
                 try
                 {
-                    var reply = ping.Send(ipAddress, 50);
+                    IPAddress ipAddr = IPAddress.Parse(ipAddress);
+                    var reply = await ping.SendPingAsync(ipAddr, 50);
                     return reply.Status == IPStatus.Success;
                 }
                 catch
@@ -134,3 +156,4 @@ namespace tool_backup
         }
     }
 }
+

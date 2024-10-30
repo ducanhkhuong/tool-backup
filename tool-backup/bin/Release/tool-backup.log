@@ -1,0 +1,7 @@
+2024-10-29 16:12:15.685 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.56
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+Logfile : E:\test C#\tool-backup\tool-backup\bin\Release\tool-backup.log
+2024-10-29 16:13:47.452 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56

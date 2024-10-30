@@ -28,14 +28,13 @@ namespace tool_backup
         private LogManager          logManager;
         private NetworkManager      networkManager;
         private OptionManager       optionManager;
-        private CancellationTokenSource cancellationTokenSource;
         private System.Windows.Forms.Timer logUpdateTimer;
 
 
         string logFileName = "tool-backup.log";
         string logFilePath = "";
         string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
-        
+
 
         string username;
         string ip;
@@ -48,17 +47,17 @@ namespace tool_backup
             InitializeComponent();
             logFilePath      = Path.Combine(currentDirectory, logFileName);
             logUpdateTimer   = new System.Windows.Forms.Timer();
-            networkManager   = new NetworkManager();
+            networkManager   = new NetworkManager(dataGridView1);
             logManager       = new LogManager(logFilePath);
             optionManager    = new OptionManager();
 
-            logUpdateTimer.Interval = 100;
+            logUpdateTimer.Interval = 50;
             logUpdateTimer.Tick += timer1_Tick;
             logUpdateTimer.Start();
 
-            optionManager.AddItem("MT7688","Giá trị 1");
-            optionManager.AddItem("AI-V2", "Giá trị 2");
-            optionManager.AddItem("AI-V3", "Giá trị 3");
+            optionManager.AddItem("MT7688", "MT7688");
+            optionManager.AddItem("AI-V2",  "AI-V2");
+            optionManager.AddItem("AI-V3",  "AI-V3");
             comboBoxOptions.DataSource = optionManager.GetItems();
         }
 
@@ -80,23 +79,22 @@ namespace tool_backup
             autoload_disconected();
             
             //CHECK JSON
-            JsonManager jsonReader = new JsonManager();
-            jsonReader.ConfigReader("setting.json");
-            try
-            {
-                Config config = jsonReader.ReadConfig();
-                Console.WriteLine($"Username: {config.AIV2.username}\n" +
-                                $"Path Home : {config.AIV2.pathhome}\n" +
-                                $"Keyfile   : {config.AIV2.key}\n"      +
-                                $"Path DB   : {config.AIV2.pathDB}\n"   +
-                                $"Path Log  : {config.AIV2.pathlog}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Lỗi: {ex.Message}");
-            }
+            //JsonManager jsonReader = new JsonManager();
+            //jsonReader.ConfigReader("setting.json");
+            //try
+            //{
+            //    Config config = jsonReader.ReadConfig();
+            //    Console.WriteLine($"Username: {config.AIV2.username}\n" +
+            //                    $"Path Home : {config.AIV2.pathhome}\n" +
+            //                    $"Keyfile   : {config.AIV2.key}\n"      +
+            //                    $"Path DB   : {config.AIV2.pathDB}\n"   +
+            //                    $"Path Log  : {config.AIV2.pathlog}");
+            //}
+            //catch (Exception ex)
+            //{
+            //    Console.WriteLine($"Lỗi: {ex.Message}");
+            //}
             //
-
         }
 
         //CHECK-OPTION
@@ -105,10 +103,11 @@ namespace tool_backup
             if (comboBoxOptions.SelectedItem is ComboBoxItem selectedItem)
             {
                 string value = optionManager.GetSelectedValue(selectedItem);
+                Console.WriteLine(value);
             }
         }
 
-        //CHECK-TYPE-SSH(KEY OR NOT KEY)
+        //CHECK-TYPE-SSH(KEY)
         private void ConnectDevice_CheckKeyfile_CheckedChanged(object sender, EventArgs e)
         {
             string key;
@@ -149,7 +148,7 @@ namespace tool_backup
                 try
                 {
                     sshManager_key.Connect();
-                    Log.Information($"SSH successfully with :\nUser : {username}\nIP : {ip}\nKeyFilePath : {keyFilePath}\nPassphrase : {passphrase}\nLogfile : {logFilePath}");
+                    Log.Information($"SSH successfully with :\nUser : {username}\nIP : {ip}\nKeyFilePath : {keyFilePath}\nPassphrase : {passphrase}");
                     autoload_connected();
                 }
                 catch (Exception ex)
@@ -169,7 +168,6 @@ namespace tool_backup
                 sshManager_key.Disconnect();
                 Log.Information("SSH: disconnected connection with " + username + "@" + ip);
             }
-            //clear Log-app
             logManager.ClearLog(Log_app);
         }
 
@@ -188,8 +186,8 @@ namespace tool_backup
 
         //CHECK-LOG-APP
         private void timer1_Tick(object sender, EventArgs e)
-        {
-            logManager.ReadLog(Log_app);
+        {   //logManager.ClearLog(Log_app);
+            logManager.ReadLog(Log_app);              
         }
 
 
@@ -205,8 +203,7 @@ namespace tool_backup
             if (scpManager_key.DownloadFile(remoteFilePath, localFilePath))
             {
                 Log.Information("SCP : downloaded successfully!");
-            }
-                
+            }    
         }
 
 
@@ -237,39 +234,15 @@ namespace tool_backup
 
 
         //SCAN IP & NETWORK
-        private async void Scan_btn_network_Click(object sender, EventArgs e)//start scan
+        private async void Scan_btn_network_Click(object sender, EventArgs e)
         {
-            Log_network.Clear();
             Scan_btn_network.Enabled = false;
             string ipRange = Scan_IP_textbox.Text.Trim();
-            cancellationTokenSource = new CancellationTokenSource();
-            var cancellationToken = cancellationTokenSource.Token;
-            await Task.Run(() => networkManager.ScanNetworks(LogMessage, ipRange, cancellationToken));
+            await Task.Run(() => 
+                networkManager.ScanNetworks(ipRange)
+            );
             Scan_btn_network.Enabled = true;
         }
-
-        private void LogMessage(string message)//log
-        {
-            if (Log_network.InvokeRequired)
-            {
-                Log_network.Invoke(new Action<string>(LogMessage), message);
-            }
-            else
-            {
-                Log_network.AppendText(message + Environment.NewLine);
-                Log_network.SelectionStart = Log_network.Text.Length;
-                Log_network.ScrollToCaret();
-            }
-        }
-
-        private void Stop_btn_network_Click(object sender, EventArgs e)//stop scan
-        {
-            if (cancellationTokenSource != null)
-            {
-                cancellationTokenSource.Cancel();
-            }
-        }
-
 
 
 

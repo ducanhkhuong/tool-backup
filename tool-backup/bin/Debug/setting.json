@@ -10,17 +10,17 @@
 
   "AI-V2": {
     "username": "nano",
-    "key"     : "",
+    "key"     : "LumiVn@2021",
     "pathhome": "/home/nano",
-    "pathDB"  : " /var/cache/smarthome/hcg1",
+    "pathDB"  : "/var/cache/smarthome/hcg1",
     "pathlog" : "/smarthome/log"
   },
 
   "AI-V3": {
     "username": "pi",
-    "key"     :  "",
+    "key"     : "LumiVn@2021",
     "pathhome": "/home/pi",
-    "pathDB"  : " /var/cache/smarthome/hcg1",
-    "pathlog" : "/smarthome/log"
+    "pathDB": "/var/cache/smarthome/hcg1",
+    "pathlog": "/smarthome/log"
   }
 }

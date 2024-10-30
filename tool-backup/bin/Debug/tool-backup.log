@@ -383,3 +383,15 @@ KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
 Passphrase : LumiVn@2021
 Logfile : E:\test C#\tool-backup\tool-backup\bin\Debug\tool-backup.log
 2024-10-29 11:12:50.153 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
+2024-10-30 13:25:57.182 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.56
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+2024-10-30 13:26:09.491 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
+2024-10-30 13:41:57.895 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.80
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+2024-10-30 13:42:37.484 +07:00 [INF] SSH: disconnected connection with root@172.16.100.80

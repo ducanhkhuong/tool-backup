@@ -46,12 +46,12 @@ namespace tool_backup
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Lỗi khi đọc file JSON: {ex.Message}");
+                    throw new Exception($"Error read file JSON: {ex.Message}");
                 }
             }
             else
             {
-                throw new FileNotFoundException("File config.json không tồn tại.");
+                throw new FileNotFoundException("File setting.json không tồn tại.");
             }
         }
     }
