@@ -52,8 +52,8 @@ namespace tool_backup
         }
     }
 
-    // Class AIConfig
-    public class AIConfig
+    // Class Config
+    public class DeviceConfig
     {
         public string username { get; set; }
         public string key { get; set; }
@@ -68,13 +68,13 @@ namespace tool_backup
     public class Config
     {
         [JsonProperty("MT7688")]
-        public AIConfig MT { get; set; }
+        public DeviceConfig MT { get; set; }
 
         [JsonProperty("AI-V2")]
-        public AIConfig AI_V2 { get; set; }
+        public DeviceConfig AI_V2 { get; set; }
 
         [JsonProperty("AI-V3")]
-        public AIConfig AI_V3 { get; set; }
+        public DeviceConfig AI_V3 { get; set; }
     }
 
     // Class JsonManager

@@ -23,7 +23,7 @@ namespace tool_backup
 {
     public partial class Form1 : Form
     {
-        
+        //var-opject
         private SSHClientManager            sshManager_key;
         private SCPClientManager            scpManager_key;
         private LogManager                  logManager;
@@ -31,18 +31,19 @@ namespace tool_backup
         private OptionManager               optionManager;
         private JsonManager                 jsonManager;
         private Config                      config;
-        private System.Windows.Forms.Timer logUpdateTimer;
+        private TreeViewManager             treeViewManager;
+        private System.Windows.Forms.Timer  logUpdateTimer;
 
-        //data log-file and timer-update
+        //var-data log-file and timer-update
         string logFileName = "tool-backup.log";
         string logFilePath = "";
         string currentDirectory = AppDomain.CurrentDomain.BaseDirectory;
         
-        //data SSH
+        //var-data SSH
         string ip;
         string keyFilePath;
 
-        //data JSON
+        //var-data-JSON
         string username_JSON;
         string key_JSON;
         string pathhome_JSON;
@@ -50,31 +51,46 @@ namespace tool_backup
         string pathLog_JSON;
         string start_JSON;
         string stop_JSON;
-        
+        string command;
+
+        //map-string
+        Dictionary<string, string> stringMap = new Dictionary<string, string>();
+
+
         public Form1()
         {
             InitializeComponent();
+
+            //object-constructor
             logFilePath      = Path.Combine(currentDirectory, logFileName);
             logUpdateTimer   = new System.Windows.Forms.Timer();
             networkManager   = new NetworkManager(dataGridView1);
             logManager       = new LogManager(logFilePath);
             optionManager    = new OptionManager();
             jsonManager      = new JsonManager();
-            LoadOptions();
+            treeViewManager  = new TreeViewManager(treeView1, Device_Download, UpdateSelectedPath);
+           
+
+            //type-device
+            optionManager.AddItem("MT7688", "MT7688");
+            optionManager.AddItem("AI-V2", "AI-V2");
+            optionManager.AddItem("AI-V3", "AI-V3");
+            comboBoxOptions.DataSource = optionManager.GetItems();
             comboBoxOptions.SelectedIndexChanged += comboBoxOptions_SelectedIndexChanged;
+
+            //timer-update
             logUpdateTimer.Interval = 50;
             logUpdateTimer.Tick += timer1_Tick;
             logUpdateTimer.Start();
 
         }
 
-        private void LoadOptions()
+        //return 
+        private void UpdateSelectedPath(string path)
         {
-            optionManager.AddItem("MT7688", "MT7688");
-            optionManager.AddItem("AI-V2", "AI-V2");
-            optionManager.AddItem("AI-V3", "AI-V3");
-            comboBoxOptions.DataSource = optionManager.GetItems();
+            command = path;
         }
+
 
         void autoload_disconected()
         {
@@ -90,6 +106,8 @@ namespace tool_backup
         {
             autoload_disconected();
         }
+
+
 
         //CHECK-OPTION
         private void comboBoxOptions_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,7 +126,7 @@ namespace tool_backup
                 jsonManager.ConfigReader("setting.json");
                 config = jsonManager.ReadConfig();
 
-                AIConfig selectedConfig = null;
+                DeviceConfig selectedConfig = null;
                 switch (selectedValue)
                 {
                     case "MT7688":
@@ -124,7 +142,6 @@ namespace tool_backup
 
                 if (selectedConfig != null)
                 {
-
                     username_JSON = selectedConfig.username;
                     key_JSON      = selectedConfig.key;
                     pathhome_JSON = selectedConfig.pathhome;
@@ -136,6 +153,14 @@ namespace tool_backup
                     ConnectDevice_Username.Text = username_JSON;
                     ConnectDevice_Passphare.Text = key_JSON;
 
+                    treeViewManager.UpdatePaths(pathLog_JSON, pathDB_JSON);
+
+                    var allPaths = treeViewManager.GetAllPaths();
+                    Device_Download.Clear();
+                    foreach (var path in allPaths)
+                    {
+                        Device_Download.AppendText(path + Environment.NewLine);
+                    }
                 }  
             }
             catch (Exception ex)
@@ -143,6 +168,8 @@ namespace tool_backup
                 MessageBox.Show($"Error loading config: {ex.Message}");
             }
         }
+
+
 
         //OPEN-KEY-FILE
         private void ConnectDevice_CheckKeyfile_CheckedChanged(object sender, EventArgs e)
@@ -185,12 +212,12 @@ namespace tool_backup
                 try
                 {
                     sshManager_key.Connect();
-                    Log.Information($"SSH successfully with :\nUser : {username_JSON}\nIP : {ip}\nKeyFilePath : {keyFilePath}\nPassphrase : {key_JSON}");
+                    Log.Information("SSH: successfully");
                     autoload_connected();
                 }
                 catch (Exception ex)
                 {
-                    Log.Error("SSH connection failed: " + ex.Message);
+                    Log.Error("SSH: connection failed: " + ex.Message);
                 }
             }
         }
@@ -209,7 +236,7 @@ namespace tool_backup
         }
 
 
-        //CMD INPUT-OUTPUT
+        //CMD-INPUT-OUTPUT
         private void check_cmd_Click(object sender, EventArgs e)
         {
             string commandText = cmd_input.Text.Trim();
@@ -223,7 +250,7 @@ namespace tool_backup
 
         //CHECK-LOG-APP
         private void timer1_Tick(object sender, EventArgs e)
-        {   //logManager.ClearLog(Log_app);
+        {  
             logManager.ReadLog(Log_app);              
         }
 
@@ -232,15 +259,45 @@ namespace tool_backup
         //DOWNLOAD FILE
         private void SCP_Download_Click(object sender, EventArgs e)
         {
-            //not handle
-            string remoteFilePath = @"";
-            string localFilePath  = @"";
-            //key
-            scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
-            if (scpManager_key.DownloadFile(remoteFilePath, localFilePath))
+            
+            string remoteFilePath = $@"{command}";
+            string downloadsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+            string fileName = Path.GetFileName(command);
+            string localFilePath = Path.Combine(downloadsFolder, fileName);
+
+            Local_Download.Text = localFilePath;
+
+            if(username_JSON == "root")
             {
-                Log.Information("SCP : downloaded successfully!");
-            }    
+                //scp file device to local
+                scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
+                if (scpManager_key.DownloadFile(remoteFilePath, localFilePath))
+                {
+                    Log.Information("downloaded successfully!");
+                }
+            }
+            else
+            {
+                string sudoPassword = "Lumivn274@aihubcamera";
+                if (sshManager_key.IsConnected)
+                {
+                    //step 1 :  move file root -> user
+                    string moveCommand = $"echo \"{sudoPassword}\" | sudo -S cp {remoteFilePath} {pathhome_JSON}";
+                    string result = sshManager_key.ExecuteCommand(moveCommand);
+
+                    //step 2 : scp file device to local
+                    string remoteMovedFilePath = $"{pathhome_JSON}/{fileName}";
+                    scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
+                    if (scpManager_key.DownloadFile(remoteMovedFilePath, localFilePath))
+                    {
+                        Log.Information("downloaded successfully!");
+                    }
+
+                    //step 3 : remove file copy
+                    string moveCommand_rm = $"rm -rf {pathhome_JSON}/{fileName}";
+                    string result_rm = sshManager_key.ExecuteCommand(moveCommand_rm);
+                }
+            }
         }
 
 
@@ -249,7 +306,7 @@ namespace tool_backup
         {
             string localFilePath =  @"";
             string remoteFilePath = @"";
-
+            //not handlle
             OpenFileDialog openFileDialog = new OpenFileDialog
             {
                 Title = "Select a File",
@@ -258,6 +315,7 @@ namespace tool_backup
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
                 localFilePath = openFileDialog.FileName;
+                Log.Information($"{localFilePath}");
             }
             //key
             scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
@@ -303,7 +361,7 @@ namespace tool_backup
         //SEARCH BY MAC
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            string searchValue = textBox1.Text.Trim();
+            string searchValue = Scan_Search.Text.Trim();
             networkManager.dgvManager.SearchByMac(searchValue);
         }
     }

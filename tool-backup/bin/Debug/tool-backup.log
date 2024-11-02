@@ -413,3 +413,86 @@ IP : 172.16.100.80
 KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
 Passphrase : LumiVn@2021
 2024-10-30 16:50:01.334 +07:00 [INF] SSH: disconnected connection with root@172.16.100.80
+2024-10-30 17:00:47.739 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.80
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+2024-10-30 17:01:18.956 +07:00 [INF] SSH successfully with :
+User : root
+IP : 172.16.100.80
+KeyFilePath : E:\thuctapdoanhnghiep\Key_HC\hcg1_Lumi
+Passphrase : LumiVn@2021
+2024-10-30 17:01:28.761 +07:00 [INF] SSH: disconnected connection with root@172.16.100.80
+2024-10-30 17:11:02.258 +07:00 [INF] SSH successfully
+2024-10-30 17:32:45.991 +07:00 [INF] SSH: successfully
+2024-10-30 17:47:34.012 +07:00 [INF] SSH: successfully
+2024-10-30 18:00:03.389 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 12:09:19.861 +07:00 [INF] SSH: successfully
+2024-11-02 12:09:34.731 +07:00 [INF] SCP : downloaded successfully!
+2024-11-02 12:29:10.163 +07:00 [INF] SSH: successfully
+2024-11-02 12:29:16.525 +07:00 [INF] SCP : downloaded successfully!
+2024-11-02 12:43:32.621 +07:00 [INF] SSH: successfully
+2024-11-02 12:44:44.213 +07:00 [INF] /tmp/log/bluetooth.log --> C:\Users\duca3\Downloads\bluetooth.log : downloaded successfully!
+2024-11-02 12:44:49.918 +07:00 [INF] /tmp/log/io-service.log --> C:\Users\duca3\Downloads\io-service.log : downloaded successfully!
+2024-11-02 12:44:56.618 +07:00 [INF] /hcg1/newhc.db --> C:\Users\duca3\Downloads\newhc.db : downloaded successfully!
+2024-11-02 12:47:42.334 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
+2024-11-02 12:49:50.496 +07:00 [INF] SSH: successfully
+2024-11-02 12:50:02.419 +07:00 [ERR] SCP: Error during download: scp: /smarthome/log/hcg1.log: Permission denied
+2024-11-02 12:50:19.369 +07:00 [ERR] SCP: Error during download: scp: /smarthome/log/hcg1.log: Permission denied
+2024-11-02 12:51:02.241 +07:00 [ERR] SCP: Error during download: scp: /var/cache/smarthome/hcg1/newhc.db: Permission denied
+2024-11-02 13:58:59.068 +07:00 [INF] SSH: successfully
+2024-11-02 13:59:05.968 +07:00 [INF] /tmp/log/bluetooth.log --> C:\Users\duca3\Downloads\bluetooth.log : downloaded successfully!
+2024-11-02 14:20:59.086 +07:00 [INF] SSH: successfully
+2024-11-02 14:21:07.651 +07:00 [ERR] Failed to move file with sudo cp command.
+2024-11-02 14:21:52.868 +07:00 [ERR] Failed to move file with sudo cp command.
+2024-11-02 14:22:20.146 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 14:25:51.545 +07:00 [INF] SSH: successfully
+2024-11-02 14:26:00.291 +07:00 [INF] File moved to /home/nano successfully!
+2024-11-02 14:26:00.528 +07:00 [ERR] scp: /home/nano: not a regular file
+2024-11-02 14:26:59.420 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 14:28:32.907 +07:00 [INF] SSH: successfully
+2024-11-02 14:28:51.721 +07:00 [ERR] Failed to move file with sudo cp command.
+2024-11-02 14:29:38.855 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 14:31:32.021 +07:00 [INF] SSH: successfully
+2024-11-02 14:31:36.669 +07:00 [INF] File moved to /home/nano successfully!
+2024-11-02 14:31:36.920 +07:00 [INF] File downloaded successfully after moving to user home directory!
+2024-11-02 14:34:40.758 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 14:35:58.463 +07:00 [INF] SSH: successfully
+2024-11-02 14:36:10.270 +07:00 [INF] File moved to /home/nano successfully!
+2024-11-02 14:38:05.099 +07:00 [INF] File moved to /home/nano successfully!
+2024-11-02 14:44:07.598 +07:00 [INF] SSH: successfully
+2024-11-02 14:44:17.185 +07:00 [INF] downloaded successfully!
+2024-11-02 14:44:27.775 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
+2024-11-02 14:45:00.663 +07:00 [INF] SSH: successfully
+2024-11-02 14:45:09.878 +07:00 [ERR] scp: /home/nano/PM.log: No such file or directory
+2024-11-02 14:45:40.442 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 14:46:26.981 +07:00 [INF] SSH: successfully
+2024-11-02 14:46:36.618 +07:00 [ERR] scp: /home/nano/PM.log: No such file or directory
+2024-11-02 14:46:50.407 +07:00 [INF] downloaded successfully!
+2024-11-02 14:47:34.628 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 14:48:05.590 +07:00 [INF] SSH: successfully
+2024-11-02 14:48:11.194 +07:00 [INF] downloaded successfully!
+2024-11-02 14:48:25.312 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 14:52:52.519 +07:00 [INF] SSH: successfully
+2024-11-02 14:53:09.783 +07:00 [INF] downloaded successfully!
+2024-11-02 15:03:29.812 +07:00 [INF] SSH: successfully
+2024-11-02 15:08:45.443 +07:00 [INF] SSH: disconnected connection with root@172.16.100.56
+2024-11-02 15:22:32.806 +07:00 [INF] SSH: successfully
+2024-11-02 15:22:45.007 +07:00 [INF] downloaded successfully!
+2024-11-02 15:23:53.253 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102
+2024-11-02 15:51:50.173 +07:00 [INF] SSH: successfully
+2024-11-02 15:51:52.441 +07:00 [INF] downloaded successfully!
+2024-11-02 15:53:56.860 +07:00 [INF] SSH: successfully
+2024-11-02 15:54:08.157 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:54:31.150 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:54:46.513 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:54:54.786 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:54:59.865 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:55:02.409 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:55:29.692 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:55:33.141 +07:00 [ERR] Empty path name is not legal.
+2024-11-02 15:56:34.281 +07:00 [INF] SSH: successfully
+2024-11-02 15:56:41.939 +07:00 [INF] downloaded successfully!
+2024-11-02 15:56:50.250 +07:00 [INF] downloaded successfully!
+2024-11-02 15:57:22.386 +07:00 [INF] SSH: disconnected connection with nano@10.10.30.102

@@ -91,7 +91,7 @@ namespace tool_backup
             }
             catch (Exception ex)
             {
-                Log.Error("SCP: Error during download: " + ex.Message);
+                Log.Error(ex.Message);
                 return false;
             }
         }

@@ -12,10 +12,10 @@
 
   "AI-V2": {
     "username": "nano",
-    "key":      "LumiVn@2021",
-    "pathhome": "/home/nano",
-    "pathDB":   "/var/cache/smarthome/hcg1",
-    "pathlog":  "/smarthome/log",
+    "key": "LumiVn@2021",
+    "pathhome": "/home/nano/",
+    "pathDB":   "/var/cache/smarthome/hcg1/",
+    "pathlog":  "/smarthome/log/",
     "start":    "systemctl start process-manager.service",
     "stop":     "systemctl stop process-manager.service"
   },
@@ -23,9 +23,9 @@
   "AI-V3": {
     "username": "pi",
     "key": "LumiVn@2021",
-    "pathhome": "/home/pi",
-    "pathDB": "/var/cache/smarthome/hcg1",
-    "pathlog": "/smarthome/log",
+    "pathhome": "/home/pi/",
+    "pathDB": "/var/cache/smarthome/hcg1/",
+    "pathlog": "/smarthome/log/",
     "start": "systemctl start process-manager.service",
     "stop":  "systemctl stop process-manager.service"
   }

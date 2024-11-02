@@ -57,18 +57,24 @@
             this.check_cmd = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.Scan_Search = new System.Windows.Forms.TextBox();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.label2 = new System.Windows.Forms.Label();
             this.Scan_IP_textbox = new System.Windows.Forms.TextBox();
             this.Scan_btn_network = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.treeView1 = new System.Windows.Forms.TreeView();
+            this.Device_Download = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.Local_Download = new System.Windows.Forms.TextBox();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox3.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -240,9 +246,9 @@
             this.groupBox2.BackColor = System.Drawing.SystemColors.MenuBar;
             this.groupBox2.Controls.Add(this.Log_app);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox2.Location = new System.Drawing.Point(1043, 13);
+            this.groupBox2.Location = new System.Drawing.Point(1184, 12);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(485, 253);
+            this.groupBox2.Size = new System.Drawing.Size(339, 678);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "log";
@@ -252,7 +258,7 @@
             this.Log_app.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Log_app.Location = new System.Drawing.Point(6, 21);
             this.Log_app.Name = "Log_app";
-            this.Log_app.Size = new System.Drawing.Size(471, 223);
+            this.Log_app.Size = new System.Drawing.Size(327, 651);
             this.Log_app.TabIndex = 0;
             this.Log_app.Text = "";
             // 
@@ -263,7 +269,7 @@
             // SCP_Download
             // 
             this.SCP_Download.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SCP_Download.Location = new System.Drawing.Point(346, 91);
+            this.SCP_Download.Location = new System.Drawing.Point(462, 22);
             this.SCP_Download.Name = "SCP_Download";
             this.SCP_Download.Size = new System.Drawing.Size(101, 31);
             this.SCP_Download.TabIndex = 7;
@@ -274,7 +280,7 @@
             // SCP_Upload
             // 
             this.SCP_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SCP_Upload.Location = new System.Drawing.Point(211, 91);
+            this.SCP_Upload.Location = new System.Drawing.Point(462, 71);
             this.SCP_Upload.Name = "SCP_Upload";
             this.SCP_Upload.Size = new System.Drawing.Size(101, 31);
             this.SCP_Upload.TabIndex = 8;
@@ -285,9 +291,9 @@
             // Log_cmd
             // 
             this.Log_cmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Log_cmd.Location = new System.Drawing.Point(6, 68);
+            this.Log_cmd.Location = new System.Drawing.Point(6, 59);
             this.Log_cmd.Name = "Log_cmd";
-            this.Log_cmd.Size = new System.Drawing.Size(795, 250);
+            this.Log_cmd.Size = new System.Drawing.Size(440, 277);
             this.Log_cmd.TabIndex = 8;
             this.Log_cmd.Text = "";
             // 
@@ -298,9 +304,9 @@
             this.groupBox4.Controls.Add(this.check_cmd);
             this.groupBox4.Controls.Add(this.Log_cmd);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(719, 272);
+            this.groupBox4.Location = new System.Drawing.Point(719, 341);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(809, 330);
+            this.groupBox4.Size = new System.Drawing.Size(459, 349);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cmd-Output";
@@ -308,7 +314,7 @@
             // cmd_input
             // 
             this.cmd_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmd_input.Location = new System.Drawing.Point(6, 21);
+            this.cmd_input.Location = new System.Drawing.Point(6, 27);
             this.cmd_input.Multiline = true;
             this.cmd_input.Name = "cmd_input";
             this.cmd_input.Size = new System.Drawing.Size(225, 26);
@@ -317,7 +323,7 @@
             // check_cmd
             // 
             this.check_cmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.check_cmd.Location = new System.Drawing.Point(237, 21);
+            this.check_cmd.Location = new System.Drawing.Point(237, 27);
             this.check_cmd.Name = "check_cmd";
             this.check_cmd.Size = new System.Drawing.Size(75, 26);
             this.check_cmd.TabIndex = 9;
@@ -329,15 +335,15 @@
             // 
             this.groupBox5.BackColor = System.Drawing.SystemColors.MenuBar;
             this.groupBox5.Controls.Add(this.label4);
-            this.groupBox5.Controls.Add(this.textBox1);
+            this.groupBox5.Controls.Add(this.Scan_Search);
             this.groupBox5.Controls.Add(this.dataGridView1);
             this.groupBox5.Controls.Add(this.label2);
             this.groupBox5.Controls.Add(this.Scan_IP_textbox);
             this.groupBox5.Controls.Add(this.Scan_btn_network);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(12, 272);
+            this.groupBox5.Location = new System.Drawing.Point(12, 346);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(701, 330);
+            this.groupBox5.Size = new System.Drawing.Size(701, 344);
             this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Scan";
@@ -352,26 +358,26 @@
             this.label4.TabIndex = 16;
             this.label4.Text = "Search :";
             // 
-            // textBox1
+            // Scan_Search
             // 
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(501, 21);
-            this.textBox1.Multiline = true;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(194, 26);
-            this.textBox1.TabIndex = 15;
-            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.Scan_Search.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Scan_Search.Location = new System.Drawing.Point(501, 21);
+            this.Scan_Search.Multiline = true;
+            this.Scan_Search.Name = "Scan_Search";
+            this.Scan_Search.Size = new System.Drawing.Size(194, 26);
+            this.Scan_Search.TabIndex = 15;
+            this.Scan_Search.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // dataGridView1
             // 
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(9, 68);
+            this.dataGridView1.Location = new System.Drawing.Point(9, 54);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(686, 253);
+            this.dataGridView1.Size = new System.Drawing.Size(686, 277);
             this.dataGridView1.TabIndex = 13;
             // 
             // label2
@@ -409,13 +415,64 @@
             this.groupBox3.BackColor = System.Drawing.SystemColors.MenuBar;
             this.groupBox3.Controls.Add(this.SCP_Upload);
             this.groupBox3.Controls.Add(this.SCP_Download);
+            this.groupBox3.Controls.Add(this.treeView1);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(401, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(630, 253);
+            this.groupBox3.Size = new System.Drawing.Size(777, 197);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Option";
+            // 
+            // treeView1
+            // 
+            this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.treeView1.Location = new System.Drawing.Point(55, 22);
+            this.treeView1.Name = "treeView1";
+            this.treeView1.Size = new System.Drawing.Size(370, 149);
+            this.treeView1.TabIndex = 9;
+            // 
+            // Device_Download
+            // 
+            this.Device_Download.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Device_Download.Location = new System.Drawing.Point(462, 21);
+            this.Device_Download.Multiline = true;
+            this.Device_Download.Name = "Device_Download";
+            this.Device_Download.Size = new System.Drawing.Size(302, 26);
+            this.Device_Download.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(372, 29);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(42, 18);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "<-----";
+            // 
+            // Local_Download
+            // 
+            this.Local_Download.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Local_Download.Location = new System.Drawing.Point(55, 21);
+            this.Local_Download.Multiline = true;
+            this.Local_Download.Name = "Local_Download";
+            this.Local_Download.Size = new System.Drawing.Size(268, 26);
+            this.Local_Download.TabIndex = 19;
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.groupBox6.Controls.Add(this.label6);
+            this.groupBox6.Controls.Add(this.Local_Download);
+            this.groupBox6.Controls.Add(this.Device_Download);
+            this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox6.Location = new System.Drawing.Point(401, 215);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(777, 120);
+            this.groupBox6.TabIndex = 20;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Rule";
             // 
             // Form1
             // 
@@ -423,7 +480,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1535, 609);
+            this.ClientSize = new System.Drawing.Size(1535, 702);
+            this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox4);
             this.Controls.Add(this.groupBox2);
@@ -446,6 +504,8 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.groupBox3.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -482,7 +542,12 @@
         private System.Windows.Forms.CheckBox ConnectDevice_CheckKeyfile;
         private System.Windows.Forms.DataGridView dataGridView1;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox Scan_Search;
+        private System.Windows.Forms.TreeView treeView1;
+        private System.Windows.Forms.TextBox Device_Download;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox Local_Download;
+        private System.Windows.Forms.GroupBox groupBox6;
     }
 }
 
