@@ -30,6 +30,9 @@
         {
             this.components = new System.ComponentModel.Container();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
@@ -68,6 +71,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.Local_Download = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.Local_Upload = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Device_Upload = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -97,7 +105,7 @@
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(12, 12);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(377, 253);
+            this.groupBox1.Size = new System.Drawing.Size(377, 349);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Connect Device";
@@ -293,7 +301,7 @@
             this.Log_cmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Log_cmd.Location = new System.Drawing.Point(6, 59);
             this.Log_cmd.Name = "Log_cmd";
-            this.Log_cmd.Size = new System.Drawing.Size(440, 277);
+            this.Log_cmd.Size = new System.Drawing.Size(440, 250);
             this.Log_cmd.TabIndex = 8;
             this.Log_cmd.Text = "";
             // 
@@ -304,9 +312,9 @@
             this.groupBox4.Controls.Add(this.check_cmd);
             this.groupBox4.Controls.Add(this.Log_cmd);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox4.Location = new System.Drawing.Point(719, 341);
+            this.groupBox4.Location = new System.Drawing.Point(719, 367);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(459, 349);
+            this.groupBox4.Size = new System.Drawing.Size(459, 321);
             this.groupBox4.TabIndex = 9;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Cmd-Output";
@@ -341,9 +349,9 @@
             this.groupBox5.Controls.Add(this.Scan_IP_textbox);
             this.groupBox5.Controls.Add(this.Scan_btn_network);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(12, 346);
+            this.groupBox5.Location = new System.Drawing.Point(12, 367);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(701, 344);
+            this.groupBox5.Size = new System.Drawing.Size(701, 321);
             this.groupBox5.TabIndex = 10;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Scan";
@@ -372,12 +380,36 @@
             // 
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataGridView1.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView1.DefaultCellStyle = dataGridViewCellStyle3;
             this.dataGridView1.Location = new System.Drawing.Point(9, 54);
             this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView1.RowHeadersWidth = 51;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(686, 277);
+            this.dataGridView1.Size = new System.Drawing.Size(686, 250);
             this.dataGridView1.TabIndex = 13;
             // 
             // label2
@@ -435,7 +467,7 @@
             // Device_Download
             // 
             this.Device_Download.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Device_Download.Location = new System.Drawing.Point(462, 21);
+            this.Device_Download.Location = new System.Drawing.Point(446, 56);
             this.Device_Download.Multiline = true;
             this.Device_Download.Name = "Device_Download";
             this.Device_Download.Size = new System.Drawing.Size(302, 26);
@@ -445,7 +477,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(372, 29);
+            this.label6.Location = new System.Drawing.Point(356, 64);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 18);
             this.label6.TabIndex = 18;
@@ -454,7 +486,7 @@
             // Local_Download
             // 
             this.Local_Download.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Local_Download.Location = new System.Drawing.Point(55, 21);
+            this.Local_Download.Location = new System.Drawing.Point(38, 56);
             this.Local_Download.Multiline = true;
             this.Local_Download.Name = "Local_Download";
             this.Local_Download.Size = new System.Drawing.Size(268, 26);
@@ -463,16 +495,69 @@
             // groupBox6
             // 
             this.groupBox6.BackColor = System.Drawing.SystemColors.MenuBar;
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.label7);
+            this.groupBox6.Controls.Add(this.Device_Upload);
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.Local_Upload);
             this.groupBox6.Controls.Add(this.label6);
             this.groupBox6.Controls.Add(this.Local_Download);
             this.groupBox6.Controls.Add(this.Device_Download);
             this.groupBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox6.Location = new System.Drawing.Point(401, 215);
             this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(777, 120);
+            this.groupBox6.Size = new System.Drawing.Size(777, 146);
             this.groupBox6.TabIndex = 20;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Rule";
+            // 
+            // Local_Upload
+            // 
+            this.Local_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Local_Upload.Location = new System.Drawing.Point(39, 97);
+            this.Local_Upload.Multiline = true;
+            this.Local_Upload.Name = "Local_Upload";
+            this.Local_Upload.Size = new System.Drawing.Size(268, 29);
+            this.Local_Upload.TabIndex = 20;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(356, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 18);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "----->";
+            // 
+            // Device_Upload
+            // 
+            this.Device_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Device_Upload.Location = new System.Drawing.Point(446, 97);
+            this.Device_Upload.Multiline = true;
+            this.Device_Upload.Name = "Device_Upload";
+            this.Device_Upload.Size = new System.Drawing.Size(302, 29);
+            this.Device_Upload.TabIndex = 22;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(157, 22);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(27, 16);
+            this.label7.TabIndex = 23;
+            this.label7.Text = "PC";
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(585, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 16);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Device";
             // 
             // Form1
             // 
@@ -548,6 +633,11 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox Local_Download;
         private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.TextBox Device_Upload;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox Local_Upload;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label7;
     }
 }
 

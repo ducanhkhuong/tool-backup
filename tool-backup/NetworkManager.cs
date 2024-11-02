@@ -65,12 +65,12 @@ namespace tool_backup
             try
             {
                 await Task.WhenAll(tasks);
-                MessageBox.Show("successfully scanner !");
+                MessageBox.Show("Successfully Scanner !");
             }
             catch (Exception)
             {
                 ;
-                MessageBox.Show("Error scanner");
+                MessageBox.Show("Error Scanner");
             }
         }
 

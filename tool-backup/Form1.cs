@@ -203,23 +203,31 @@ namespace tool_backup
         //SSH
         private void ConnectDevice_SSH_Click(object sender, EventArgs e)
         {
-            ip          = ConnectDevice_Ip_index1.Text.Trim();
-            keyFilePath = ConnectDevice_KeyFile  .Text.Trim();
-
-            sshManager_key = new SSHClientManager(ip, username_JSON, keyFilePath, key_JSON);
-            if (sshManager_key.Connect())
+            try
             {
-                try
+                ip          = ConnectDevice_Ip_index1.Text.Trim();
+                keyFilePath = ConnectDevice_KeyFile  .Text.Trim();
+
+                sshManager_key = new SSHClientManager(ip, username_JSON, keyFilePath, key_JSON);
+                if (sshManager_key.Connect())
                 {
-                    sshManager_key.Connect();
-                    Log.Information("SSH: successfully");
-                    autoload_connected();
-                }
-                catch (Exception ex)
-                {
-                    Log.Error("SSH: connection failed: " + ex.Message);
+                    try
+                    {
+                        sshManager_key.Connect();
+                        Log.Information("SSH: successfully");
+                        autoload_connected();
+                    }
+                    catch (Exception ex)
+                    {
+                        Log.Error("SSH: connection failed: " + ex.Message);
+                    }
                 }
             }
+            catch (Exception)
+            {
+                MessageBox.Show("Try Again");
+            }
+
         }
 
 
@@ -239,11 +247,18 @@ namespace tool_backup
         //CMD-INPUT-OUTPUT
         private void check_cmd_Click(object sender, EventArgs e)
         {
-            string commandText = cmd_input.Text.Trim();
-            sshManager_key.ExecuteCommand(commandText, message =>
-                          {
-                                Log_cmd.AppendText(message + "\n");
-                          });
+            try
+            {
+                string commandText = cmd_input.Text.Trim();
+                sshManager_key.ExecuteCommand(commandText, message =>
+                              {
+                                    Log_cmd.AppendText(message + "\n");
+                              });
+            }
+            catch (Exception)
+            {
+                MessageBox.Show("Not SSH");
+            }
         }
 
 
@@ -259,70 +274,152 @@ namespace tool_backup
         //DOWNLOAD FILE
         private void SCP_Download_Click(object sender, EventArgs e)
         {
-            
-            string remoteFilePath = $@"{command}";
-            string downloadsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
-            string fileName = Path.GetFileName(command);
-            string localFilePath = Path.Combine(downloadsFolder, fileName);
-
-            Local_Download.Text = localFilePath;
-
-            if(username_JSON == "root")
+            try
             {
-                //scp file device to local
-                scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
-                if (scpManager_key.DownloadFile(remoteFilePath, localFilePath))
+                string remoteFilePath = $@"{command}";
+                string downloadsFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.UserProfile), "Downloads");
+                string fileName = Path.GetFileName(command);
+                string localFilePath = Path.Combine(downloadsFolder, fileName);
+
+                Local_Download.Text = localFilePath;
+
+                if(username_JSON == "root" && sshManager_key.IsConnected)
                 {
-                    Log.Information("downloaded successfully!");
+                    //scp file device to local
+                    scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
+                    if (scpManager_key.DownloadFile(remoteFilePath, localFilePath))
+                    {
+                        Log.Information("Downloaded Successfully!");
+                        MessageBox.Show("Downloaded Successfully!");
+                    }
+                }
+                else
+                {
+                    string sudoPassword = "Lumivn274@aihubcamera";
+                    if (sshManager_key.IsConnected)
+                    {
+                        //step 1 :  move file root -> user
+                        string moveCommand = $"echo \"{sudoPassword}\" | sudo -S cp {remoteFilePath} {pathhome_JSON}";
+                        string result = sshManager_key.ExecuteCommand(moveCommand);
+
+                        //step 2 : scp file device to local
+                        string remoteMovedFilePath = $"{pathhome_JSON}/{fileName}";
+                        scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
+                        if (scpManager_key.DownloadFile(remoteMovedFilePath, localFilePath))
+                        {
+                            Log.Information("downloaded successfully!");
+                            MessageBox.Show("Downloaded Successfully!");
+                        }
+
+                        //step 3 : remove file copy
+                        string moveCommand_rm = $"rm -rf {pathhome_JSON}/{fileName}";
+                        string result_rm = sshManager_key.ExecuteCommand(moveCommand_rm);
+                    }           
                 }
             }
-            else
+            catch (Exception)
             {
-                string sudoPassword = "Lumivn274@aihubcamera";
-                if (sshManager_key.IsConnected)
-                {
-                    //step 1 :  move file root -> user
-                    string moveCommand = $"echo \"{sudoPassword}\" | sudo -S cp {remoteFilePath} {pathhome_JSON}";
-                    string result = sshManager_key.ExecuteCommand(moveCommand);
-
-                    //step 2 : scp file device to local
-                    string remoteMovedFilePath = $"{pathhome_JSON}/{fileName}";
-                    scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
-                    if (scpManager_key.DownloadFile(remoteMovedFilePath, localFilePath))
-                    {
-                        Log.Information("downloaded successfully!");
-                    }
-
-                    //step 3 : remove file copy
-                    string moveCommand_rm = $"rm -rf {pathhome_JSON}/{fileName}";
-                    string result_rm = sshManager_key.ExecuteCommand(moveCommand_rm);
-                }
+                MessageBox.Show("Try Again");
             }
         }
+
+
+
 
 
         //UPLOAD FILE
         private void SCP_Upload_Click(object sender, EventArgs e)
         {
-            string localFilePath =  @"";
-            string remoteFilePath = @"";
-            //not handlle
-            OpenFileDialog openFileDialog = new OpenFileDialog
+            try
             {
-                Title = "Select a File",
-                Filter = "All Files (*.*)|*.*"
-            };
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                localFilePath = openFileDialog.FileName;
-                Log.Information($"{localFilePath}");
+                string localFilePath = @"";
+                string fileName = Path.GetFileName(localFilePath);
+                //string remoteFilePath = @"";
+                if(username_JSON == "root")
+                {
+                    //step 1 : open file local 
+                    OpenFileDialog openFileDialog = new OpenFileDialog
+                    {
+                        Title = "Select a File",
+                        Filter = "All Files (*.*)|*.*"
+                    };
+                    if (openFileDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        localFilePath = openFileDialog.FileName;
+                        Local_Upload.Text = localFilePath;
+                        Device_Upload.Text = pathDB_JSON;
+                    }
+                    
+
+                    //step 2 : stop device
+                    string stopCommand = $"{stop_JSON}";
+                    string resultstop = sshManager_key.ExecuteCommand(stopCommand);
+                    Thread.Sleep(1000);
+
+                    //step 3 : scp local to home device
+                    scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
+                    if (scpManager_key.UploadFile(localFilePath, pathDB_JSON))
+                    {
+                        Log.Information("Uploaded Successfully");
+                    }
+                    Thread.Sleep(3000);
+
+                    //step 4 : start device
+                    string startCommand = $"{start_JSON}";
+                    string resultstart = sshManager_key.ExecuteCommand(startCommand);
+
+                    Console.WriteLine(localFilePath);
+                    Console.WriteLine(stop_JSON);
+                    Console.WriteLine(pathDB_JSON);
+                    Console.WriteLine(start_JSON);
+                }
+                else
+                {
+                    if (sshManager_key.IsConnected){
+                        ;
+                        //Local_Upload.Text = localFilePath;  
+                        ////step 1 : open file local 
+                        //OpenFileDialog openFileDialog = new OpenFileDialog
+                        //{
+                        //    Title = "Select a File",
+                        //    Filter = "All Files (*.*)|*.*"
+                        //};
+                        //if (openFileDialog.ShowDialog() == DialogResult.OK)
+                        //{
+                        //    localFilePath = openFileDialog.FileName;
+                        //}
+
+
+
+                        ////step 2 : stop device
+                        //string stopCommand = $"{stop_JSON}";
+                        //string resultstop = sshManager_key.ExecuteCommand(stopCommand);
+                        //Thread.Sleep(500);
+
+
+                        ////step 3 : scp local to home device
+                        //scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
+                        //if (scpManager_key.UploadFile(localFilePath, pathhome_JSON))
+                        //{
+                        //    Log.Information("Uploaded Successfully");
+                        //}
+                        //Thread.Sleep(500);
+
+                        ////step 4 : move home device to folder DB
+                        //string moveCommand = $"mv {pathhome_JSON} {pathLog_JSON}";
+                        //string resultmove = sshManager_key.ExecuteCommand(moveCommand);
+                        //Thread.Sleep(500);
+
+                        ////step 5 : start device
+                        //string startCommand = $"{start_JSON}";
+                        //string resultstart = sshManager_key.ExecuteCommand(startCommand);
+                        //Console.WriteLine("Thanh Cong");
+                    }
+                }
             }
-            //key
-            scpManager_key = new SCPClientManager(ip, username_JSON, keyFilePath, key_JSON);
-            if (scpManager_key.UploadFile(localFilePath, remoteFilePath))
-            {
-                Log.Information("SCP : uploaded successfully with key!");
-            }            
+            catch (Exception) {
+                MessageBox.Show("Try Again");
+            }
         }
 
 
