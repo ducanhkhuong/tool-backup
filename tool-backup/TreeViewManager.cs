@@ -57,7 +57,7 @@ namespace tool_backup
                 nodeB1.Nodes.Add(new TreeNode("updater.log (V2-V3)")           { Tag = var_download_log + "updater.log" });
             
             TreeNode nodeB2 = new TreeNode("DataBase");
-                nodeB2.Nodes.Add(new TreeNode("newhc.db") { Tag = var_download_db + "newhc.db" });
+                nodeB2.Nodes.Add(new TreeNode("newhc.db") {Tag = var_download_db});
 
             nodeA.Nodes.Add(nodeA1);
             nodeB.Nodes.Add(nodeB1);

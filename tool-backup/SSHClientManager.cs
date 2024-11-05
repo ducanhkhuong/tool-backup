@@ -96,10 +96,6 @@ namespace tool_backup
                 try
                 {
                     var command = client.RunCommand(commandText);
-
-                    logAction($"Command: {commandText}");
-                    logAction($"Output:\n{command.Result}");
-
                     if (!string.IsNullOrEmpty(command.Error))
                     {
                         logAction($"Error:\n{command.Error}");

@@ -71,11 +71,11 @@
             this.label6 = new System.Windows.Forms.Label();
             this.Local_Download = new System.Windows.Forms.TextBox();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.Local_Upload = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.Device_Upload = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.Device_Upload = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.Local_Upload = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -321,15 +321,18 @@
             // 
             // cmd_input
             // 
+            this.cmd_input.Enabled = false;
             this.cmd_input.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmd_input.Location = new System.Drawing.Point(6, 27);
             this.cmd_input.Multiline = true;
             this.cmd_input.Name = "cmd_input";
+            this.cmd_input.ReadOnly = true;
             this.cmd_input.Size = new System.Drawing.Size(225, 26);
             this.cmd_input.TabIndex = 10;
             // 
             // check_cmd
             // 
+            this.check_cmd.Enabled = false;
             this.check_cmd.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.check_cmd.Location = new System.Drawing.Point(237, 27);
             this.check_cmd.Name = "check_cmd";
@@ -511,33 +514,15 @@
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Rule";
             // 
-            // Local_Upload
+            // label8
             // 
-            this.Local_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Local_Upload.Location = new System.Drawing.Point(39, 97);
-            this.Local_Upload.Multiline = true;
-            this.Local_Upload.Name = "Local_Upload";
-            this.Local_Upload.Size = new System.Drawing.Size(268, 29);
-            this.Local_Upload.TabIndex = 20;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(356, 108);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 18);
-            this.label5.TabIndex = 21;
-            this.label5.Text = "----->";
-            // 
-            // Device_Upload
-            // 
-            this.Device_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Device_Upload.Location = new System.Drawing.Point(446, 97);
-            this.Device_Upload.Multiline = true;
-            this.Device_Upload.Name = "Device_Upload";
-            this.Device_Upload.Size = new System.Drawing.Size(302, 29);
-            this.Device_Upload.TabIndex = 22;
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label8.Location = new System.Drawing.Point(585, 22);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(56, 16);
+            this.label8.TabIndex = 24;
+            this.label8.Text = "Device";
             // 
             // label7
             // 
@@ -549,15 +534,33 @@
             this.label7.TabIndex = 23;
             this.label7.Text = "PC";
             // 
-            // label8
+            // Device_Upload
             // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(585, 22);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(56, 16);
-            this.label8.TabIndex = 24;
-            this.label8.Text = "Device";
+            this.Device_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Device_Upload.Location = new System.Drawing.Point(446, 97);
+            this.Device_Upload.Multiline = true;
+            this.Device_Upload.Name = "Device_Upload";
+            this.Device_Upload.Size = new System.Drawing.Size(302, 29);
+            this.Device_Upload.TabIndex = 22;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(356, 108);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(42, 18);
+            this.label5.TabIndex = 21;
+            this.label5.Text = "----->";
+            // 
+            // Local_Upload
+            // 
+            this.Local_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Local_Upload.Location = new System.Drawing.Point(39, 97);
+            this.Local_Upload.Multiline = true;
+            this.Local_Upload.Name = "Local_Upload";
+            this.Local_Upload.Size = new System.Drawing.Size(268, 29);
+            this.Local_Upload.TabIndex = 20;
             // 
             // Form1
             // 
