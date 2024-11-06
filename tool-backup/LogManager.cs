@@ -1,4 +1,60 @@
-﻿using System;
+﻿//using System;
+//using System.IO;
+//using System.Windows.Forms;
+//using Serilog;
+
+//namespace tool_backup
+//{
+//    public class LogManager
+//    {
+//        private string logFilePath;
+
+//        public LogManager()
+//        {
+//            //this.logFilePath = logFilePath;
+
+//            //// Khởi tạo Serilog để ghi log vào file
+//            //Log.Logger = new LoggerConfiguration()
+//            //    .WriteTo.File(logFilePath, rollingInterval: RollingInterval.Day) // Tạo file log mỗi ngày
+//            //    .CreateLogger();
+//        }
+
+
+//        public void WriteLog(RichTextBox logApp, string message)
+//        {
+//            try
+//            {
+//                logApp.AppendText($"[{DateTime.Now}] : {message}\n");
+//                Log.Information(message);
+//            }
+//            catch (Exception ex)
+//            {
+//                Log.Error("Error writing log: " + ex.Message);
+//            }
+//        }
+
+//        public void ClearLog(RichTextBox logApp)
+//        {
+//            try
+//            {
+//                logApp.Clear();
+//            }
+//            catch (Exception ex)
+//            {
+//                Log.Error("Error clearing log: " + ex.Message);
+//            }
+//        }
+
+
+//        public void CloseLog()
+//        {
+//            Log.CloseAndFlush();
+//        }
+//    }
+//}
+
+
+using System;
 using System.IO;
 using System.Windows.Forms;
 using Serilog;
@@ -8,40 +64,31 @@ namespace tool_backup
     public class LogManager
     {
         private readonly string logFilePath;
-        private long lastReadPosition;
 
-        public LogManager(string logFilePath)
+        public LogManager()
         {
-            this.logFilePath = logFilePath;
-            lastReadPosition = 0;
+            string appDataFolder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData);
+            string appFolder = Path.Combine(appDataFolder, "LUMI_OS_LOG");
+            Directory.CreateDirectory(appFolder);
+            logFilePath = Path.Combine(appFolder, "LUMI_OS.log");
+            Log.Logger = new LoggerConfiguration()
+                .WriteTo.File(logFilePath, rollingInterval: RollingInterval.Infinite)
+                .CreateLogger();
         }
 
-        public void ReadLog(RichTextBox logApp)
+
+        public void WriteLog(RichTextBox logApp, string message)
         {
             try
             {
-                using (FileStream fs = new FileStream(logFilePath, FileMode.Open, FileAccess.Read, FileShare.ReadWrite))
-                {
-                    fs.Seek(lastReadPosition, SeekOrigin.Begin);
-                    using (StreamReader reader = new StreamReader(fs))
-                    {
-                        string newLine;
-                        while ((newLine = reader.ReadLine()) != null)
-                        {
-                            logApp.AppendText(newLine + Environment.NewLine);
-                            logApp.SelectionStart = logApp.Text.Length;
-                            logApp.ScrollToCaret();
-                        }
-                        lastReadPosition = fs.Position;
-                    }
-                }
+                logApp.AppendText($"[{DateTime.Now}] : {message}\n");
+                Log.Information(message);
             }
             catch (Exception ex)
             {
-                Log.Error("Error reading log file: " + ex.Message);
+                Log.Error("Error writing log: " + ex.Message);
             }
         }
-
 
         public void ClearLog(RichTextBox logApp)
         {
@@ -51,8 +98,14 @@ namespace tool_backup
             }
             catch (Exception ex)
             {
-                Log.Error("Error clearing log file: " + ex.Message);
+                Log.Error("Error clearing log: " + ex.Message);
             }
+        }
+
+
+        public void CloseLog()
+        {
+            Log.CloseAndFlush();
         }
     }
 }

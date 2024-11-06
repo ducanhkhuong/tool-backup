@@ -188,6 +188,7 @@ namespace tool_backup
             {
                 key = "";
             }
+
         }
 
         //SSH
@@ -301,6 +302,7 @@ namespace tool_backup
                         string moveCommand_rm = $"rm -rf {pathhome_JSON}/{fileName}";
                         string result_rm = sshManager_key.ExecuteCommand(moveCommand_rm);
 
+                        logManager.WriteLog(Log_app, "Downloaded successfully!");
                         MessageBox.Show("Downloaded Successfully!");
                     }           
                 }
@@ -365,6 +367,8 @@ namespace tool_backup
                     {
                         Log_cmd.AppendText("2." + message + "\n");
                     });
+
+                    logManager.WriteLog(Log_app, "Uploaded Successfully");
                     MessageBox.Show("Uploaded Successfully");
                 }
                 else
@@ -416,6 +420,7 @@ namespace tool_backup
                         {
                             Log_cmd.AppendText("5." + message + "\n");
                         });
+                        logManager.WriteLog(Log_app, "Uploaded Successfully");
                         MessageBox.Show("Uploaded Successfully");
                     }
                 }

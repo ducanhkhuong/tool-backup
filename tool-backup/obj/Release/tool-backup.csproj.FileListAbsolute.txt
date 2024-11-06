@@ -8,7 +8,6 @@ E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.csproj.GenerateResour
 E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.csproj.CoreCompileInputs.cache
 E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.exe
 E:\test C#\tool-backup\tool-backup\obj\Release\tool-backup.pdb
-E:\test C#\tool-backup\tool-backup\bin\Release\setting.json
 E:\test C#\tool-backup\tool-backup\bin\Release\Microsoft.Bcl.AsyncInterfaces.dll
 E:\test C#\tool-backup\tool-backup\bin\Release\Newtonsoft.Json.dll
 E:\test C#\tool-backup\tool-backup\bin\Release\Renci.SshNet.dll
@@ -34,3 +33,7 @@ E:\test C#\tool-backup\tool-backup\bin\Release\System.Runtime.CompilerServices.U
 E:\test C#\tool-backup\tool-backup\bin\Release\System.Threading.Channels.xml
 E:\test C#\tool-backup\tool-backup\bin\Release\System.Threading.Tasks.Extensions.xml
 E:\test C#\tool-backup\tool-backup\obj\Release\tool-bac.5BB6E57B.Up2Date
+E:\test C#\tool-backup\tool-backup\bin\Release\Form1.resx
+E:\test C#\tool-backup\tool-backup\bin\Release\Form1.cs
+E:\test C#\tool-backup\tool-backup\bin\Release\Form1.Designer.cs
+E:\test C#\tool-backup\tool-backup\bin\Release\setting.json

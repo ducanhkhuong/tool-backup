@@ -31,6 +31,9 @@ E:\test C#\tool-backup\tool-backup\bin\Debug\System.Diagnostics.DiagnosticSource
 E:\test C#\tool-backup\tool-backup\bin\Debug\System.Memory.xml
 E:\test C#\tool-backup\tool-backup\bin\Debug\System.Numerics.Vectors.xml
 E:\test C#\tool-backup\tool-backup\bin\Debug\System.Threading.Channels.xml
-E:\test C#\tool-backup\tool-backup\bin\Debug\setting.json
 E:\test C#\tool-backup\tool-backup\bin\Debug\Newtonsoft.Json.dll
 E:\test C#\tool-backup\tool-backup\bin\Debug\Newtonsoft.Json.xml
+E:\test C#\tool-backup\tool-backup\bin\Debug\Form1.resx
+E:\test C#\tool-backup\tool-backup\bin\Debug\Form1.cs
+E:\test C#\tool-backup\tool-backup\bin\Debug\Form1.Designer.cs
+E:\test C#\tool-backup\tool-backup\bin\Debug\setting.json

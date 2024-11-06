@@ -16,10 +16,6 @@ namespace tool_backup
         [STAThread]
         static void Main()
         {
-            Log.Logger = new LoggerConfiguration()
-                .MinimumLevel.Debug()
-                .WriteTo.File("tool-backup.log")
-                .CreateLogger();
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new Form1());
