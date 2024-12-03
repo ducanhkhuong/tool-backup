@@ -16,12 +16,11 @@ namespace tool_backup
 
         private void InitializeDataGridView()
         {
-            dataGridView.ColumnCount = 5;
+            dataGridView.ColumnCount = 4;
             dataGridView.Columns[0].Name = "IP";
             dataGridView.Columns[1].Name = "MAC";
             dataGridView.Columns[2].Name = "MAC-eth0";
-            dataGridView.Columns[3].Name = "NAME";
-            dataGridView.Columns[4].Name = "";
+            dataGridView.Columns[3].Name = "";
             dataGridView.AllowUserToAddRows = false;
         }
 

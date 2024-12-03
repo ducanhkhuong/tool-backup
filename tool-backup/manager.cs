@@ -115,12 +115,75 @@ namespace tool_backup
             }
         }
 
+        public void get_ip_status(CheckBox ip_get,TextBox textBox)
+        {
+            if (ip_get.Checked) { 
+                textBox.Enabled = true;
+            }
+            else
+            {
+                textBox.Enabled = false;
+            }
+        }
+
+        public void get_ip_input(CheckBox ip_get, TextBox textBox)
+        {
+            if (ip_get.Checked)
+            {
+                ip = textBox.Text;
+                textBox.Text = ip;
+            }
+        }
+
+        public void connect(CheckBox ip_get, Button button, TextBox textBox)
+        {
+            try
+            {
+                if (!ip_get.Checked)
+                {
+                    ip = networkManager.get_ip_scan_succesfully();
+                    textBox.Text = ip;  
+                }
+
+                Console.WriteLine($" {ip} \n {username_JSON} \n {keyFilePath} \n {key_JSON}");
+
+                sshManager_key = new ssh(ip, username_JSON, keyFilePath, key_JSON);
+                if (sshManager_key.Connect())
+                {
+                    autoload_connected(button);
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Try Again");
+            }
+
+        }
+
+        public void disconnect(Button button)
+        {
+            try
+            {
+                if (sshManager_key != null)
+                {
+                    sshManager_key.Disconnect();
+                    autoload_disconected(button);
+                    MessageBox.Show("Đã ngắt kết nối thiết bị");
+                }
+            }
+            catch
+            {
+                MessageBox.Show("Try Again");
+            }
+        }
+
         public void get_key_file(CheckBox keyfile, TextBox textBox)
         {
             try
             {
                 if (keyfile.Checked)
                 {
+                    textBox.Enabled = true;
                     OpenFileDialog openFileDialog = new OpenFileDialog
                     {
                         Title = "Select a File",
@@ -132,7 +195,10 @@ namespace tool_backup
                         keyFilePath = openFileDialog.FileName;
                         textBox.Text = keyFilePath;
                     }
-
+                }
+                else
+                {
+                    textBox.Enabled = false;
                 }
             }
             catch (Exception)
@@ -141,23 +207,6 @@ namespace tool_backup
             }
         }
 
-        public void connect(TextBox textBox)
-        {
-            try
-            {
-                ip = networkManager.get_ip_scan_succesfully();
-                textBox.Text = ip;
-            }
-            catch
-            {
-                MessageBox.Show("Try Again");
-            }
-        }
-
-        public void disconnect()
-        {
-            ;
-        }
 
         private void check_empty()
         {
@@ -383,7 +432,7 @@ namespace tool_backup
         }
 
 
-        public async void scan_ip_mac(TextBox ip, TextBox mac, TextBox keyfile)
+        public async void scan_ip_mac(TextBox ip, TextBox mac, TextBox keyfile,ProgressBar progress)
         {
             string ipRange = ip.Text.Trim();
             string macAddr = mac.Text.Trim();
@@ -393,20 +442,23 @@ namespace tool_backup
             if (string.IsNullOrEmpty(keyFilePath))
             {
                 MessageBox.Show("key File is empty, please try again.");
+                return;
             }
             if (string.IsNullOrEmpty(ipRange))
             {
                 MessageBox.Show("iprange is empty, please try again.");
+                return;
             }
             if (string.IsNullOrEmpty(macAddr))
             {
                 MessageBox.Show("mac is empty, please try again.");
+                return;
             }
 
             //handle
             try
             {
-                await Task.Run(() => networkManager.ScanNetworks(ipRange, macAddr, username_JSON, keyFilePath, key_JSON));
+                await Task.Run(() => networkManager.ScanNetworks(ipRange, macAddr, username_JSON, keyFilePath, key_JSON, progress));
             }
             catch (Exception)
             {

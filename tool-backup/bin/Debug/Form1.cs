@@ -60,8 +60,17 @@ namespace tool_backup
             }
         }
 
-        //CHECK-ENTER-IP
+        //CHECK-STATUS-IP
+        private void ConnectDevice_CheckIp_CheckedChanged(object sender, EventArgs e)
+        {
+            manager.get_ip_status(ConnectDevice_CheckIp, ConnectDevice_Ip);
+        }
 
+        //CHECK-INPUT-IP
+        private void ConnectDevice_Ip_TextChanged(object sender, EventArgs e)
+        {
+            manager.get_ip_input(ConnectDevice_CheckIp, ConnectDevice_Ip);
+        }
 
         //OPEN-KEY-FILE
         private void ConnectDevice_CheckKeyfile_CheckedChanged(object sender, EventArgs e)
@@ -84,7 +93,7 @@ namespace tool_backup
         //SCAN IP & NETWORK
         private void Scan_btn_network_Click(object sender, EventArgs e)
         {
-            manager.scan_ip_mac(Scan_IP_textbox, Scan_Search, ConnectDevice_KeyFile);      
+            manager.scan_ip_mac(Scan_IP_textbox, Scan_Search, ConnectDevice_KeyFile, progressBar1); 
         }
 
         //SEARCH BY MAC
@@ -92,17 +101,17 @@ namespace tool_backup
         {
             manager.search_by_mac(Scan_Search);
         }
-
-        //DISCONECT
-        private void Btn_Exit_Click(object sender, EventArgs e)
-        {
-            ;
-        }
         
         //CONNECT
         private void Btn_Connect_Click(object sender, EventArgs e)
         {
-            manager.connect(ConnectDevice_Ip);
+            manager.connect(ConnectDevice_CheckIp,ConnectDevice_Status, ConnectDevice_Ip); 
+        }
+
+        //DISCONECT
+        private void Btn_Exit_Click(object sender, EventArgs e)
+        {
+            manager.disconnect(ConnectDevice_Status);
         }
     }
 }

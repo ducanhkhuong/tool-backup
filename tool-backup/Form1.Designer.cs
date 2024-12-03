@@ -68,6 +68,9 @@
             this.ConnectDevice_Ip = new System.Windows.Forms.TextBox();
             this.Btn_Exit = new System.Windows.Forms.Button();
             this.Btn_Connect = new System.Windows.Forms.Button();
+            this.ConnectDevice_CheckIp = new System.Windows.Forms.CheckBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.label9 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -79,6 +82,7 @@
             // groupBox1
             // 
             this.groupBox1.BackColor = System.Drawing.SystemColors.GradientInactiveCaption;
+            this.groupBox1.Controls.Add(this.ConnectDevice_CheckIp);
             this.groupBox1.Controls.Add(this.Btn_Connect);
             this.groupBox1.Controls.Add(this.Btn_Exit);
             this.groupBox1.Controls.Add(this.ConnectDevice_Ip);
@@ -149,14 +153,14 @@
             this.ConnectDevice_Status.Location = new System.Drawing.Point(446, 18);
             this.ConnectDevice_Status.Margin = new System.Windows.Forms.Padding(0);
             this.ConnectDevice_Status.Name = "ConnectDevice_Status";
-            this.ConnectDevice_Status.Size = new System.Drawing.Size(22, 23);
+            this.ConnectDevice_Status.Size = new System.Drawing.Size(22, 22);
             this.ConnectDevice_Status.TabIndex = 6;
             this.ConnectDevice_Status.UseVisualStyleBackColor = false;
             // 
             // ConnectDevice_CheckKeyfile
             // 
             this.ConnectDevice_CheckKeyfile.AutoSize = true;
-            this.ConnectDevice_CheckKeyfile.Location = new System.Drawing.Point(329, 117);
+            this.ConnectDevice_CheckKeyfile.Location = new System.Drawing.Point(318, 114);
             this.ConnectDevice_CheckKeyfile.Name = "ConnectDevice_CheckKeyfile";
             this.ConnectDevice_CheckKeyfile.Size = new System.Drawing.Size(18, 17);
             this.ConnectDevice_CheckKeyfile.TabIndex = 11;
@@ -174,6 +178,7 @@
             // 
             // ConnectDevice_KeyFile
             // 
+            this.ConnectDevice_KeyFile.Enabled = false;
             this.ConnectDevice_KeyFile.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ConnectDevice_KeyFile.Location = new System.Drawing.Point(101, 110);
             this.ConnectDevice_KeyFile.Name = "ConnectDevice_KeyFile";
@@ -217,7 +222,7 @@
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.Location = new System.Drawing.Point(801, 367);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(707, 321);
+            this.groupBox2.Size = new System.Drawing.Size(722, 321);
             this.groupBox2.TabIndex = 5;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Log";
@@ -227,14 +232,14 @@
             this.Log_app.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Log_app.Location = new System.Drawing.Point(13, 54);
             this.Log_app.Name = "Log_app";
-            this.Log_app.Size = new System.Drawing.Size(679, 250);
+            this.Log_app.Size = new System.Drawing.Size(694, 250);
             this.Log_app.TabIndex = 0;
             this.Log_app.Text = "";
             // 
             // SCP_Download
             // 
             this.SCP_Download.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SCP_Download.Location = new System.Drawing.Point(591, 22);
+            this.SCP_Download.Location = new System.Drawing.Point(479, 24);
             this.SCP_Download.Name = "SCP_Download";
             this.SCP_Download.Size = new System.Drawing.Size(101, 31);
             this.SCP_Download.TabIndex = 7;
@@ -245,7 +250,7 @@
             // SCP_Upload
             // 
             this.SCP_Upload.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SCP_Upload.Location = new System.Drawing.Point(591, 62);
+            this.SCP_Upload.Location = new System.Drawing.Point(479, 61);
             this.SCP_Upload.Name = "SCP_Upload";
             this.SCP_Upload.Size = new System.Drawing.Size(101, 31);
             this.SCP_Upload.TabIndex = 8;
@@ -341,7 +346,7 @@
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(801, 12);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(707, 338);
+            this.groupBox3.Size = new System.Drawing.Size(722, 338);
             this.groupBox3.TabIndex = 12;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Option";
@@ -349,9 +354,9 @@
             // treeView1
             // 
             this.treeView1.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.treeView1.Location = new System.Drawing.Point(55, 22);
+            this.treeView1.Location = new System.Drawing.Point(13, 24);
             this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(377, 297);
+            this.treeView1.Size = new System.Drawing.Size(437, 297);
             this.treeView1.TabIndex = 9;
             // 
             // Device_Download
@@ -466,6 +471,7 @@
             this.ConnectDevice_Ip.Name = "ConnectDevice_Ip";
             this.ConnectDevice_Ip.Size = new System.Drawing.Size(211, 24);
             this.ConnectDevice_Ip.TabIndex = 22;
+            this.ConnectDevice_Ip.TextChanged += new System.EventHandler(this.ConnectDevice_Ip_TextChanged);
             // 
             // Btn_Exit
             // 
@@ -489,13 +495,42 @@
             this.Btn_Connect.UseVisualStyleBackColor = true;
             this.Btn_Connect.Click += new System.EventHandler(this.Btn_Connect_Click);
             // 
+            // ConnectDevice_CheckIp
+            // 
+            this.ConnectDevice_CheckIp.AutoSize = true;
+            this.ConnectDevice_CheckIp.Location = new System.Drawing.Point(318, 84);
+            this.ConnectDevice_CheckIp.Name = "ConnectDevice_CheckIp";
+            this.ConnectDevice_CheckIp.Size = new System.Drawing.Size(18, 17);
+            this.ConnectDevice_CheckIp.TabIndex = 24;
+            this.ConnectDevice_CheckIp.UseVisualStyleBackColor = true;
+            this.ConnectDevice_CheckIp.CheckedChanged += new System.EventHandler(this.ConnectDevice_CheckIp_CheckedChanged);
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Location = new System.Drawing.Point(943, 698);
+            this.progressBar1.Maximum = 255;
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(580, 23);
+            this.progressBar1.TabIndex = 21;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.Location = new System.Drawing.Point(811, 705);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(0, 16);
+            this.label9.TabIndex = 22;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1535, 702);
+            this.ClientSize = new System.Drawing.Size(1535, 733);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.progressBar1);
             this.Controls.Add(this.groupBox6);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.groupBox2);
@@ -518,6 +553,7 @@
             this.groupBox6.ResumeLayout(false);
             this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -560,6 +596,9 @@
         private System.Windows.Forms.TextBox ConnectDevice_Ip;
         private System.Windows.Forms.Button Btn_Exit;
         private System.Windows.Forms.Button Btn_Connect;
+        private System.Windows.Forms.CheckBox ConnectDevice_CheckIp;
+        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.Label label9;
     }
 }
 

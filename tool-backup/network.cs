@@ -10,6 +10,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace tool_backup
 {
 
@@ -30,12 +31,13 @@ namespace tool_backup
         }
 
 
-        public void ScanNetworks(string ipRange ,string macaddr, string usr , string keypath , string passphare)
+        public void ScanNetworks(string ipRange ,string macaddr, string usr , string keypath , string passphare,ProgressBar progress)
         {
-            ScanIpRange(ipRange,macaddr,usr,keypath,passphare);
+            ScanIpRange(ipRange,macaddr,usr,keypath,passphare, progress);
         }
 
-        private async void ScanIpRange(string ipRange, string macaddr, string usr, string keypath, string passphare)
+
+        private async void ScanIpRange(string ipRange, string macaddr, string usr, string keypath, string passphare, ProgressBar progress)
         {
             var parts = ipRange.Split('.');
             if (parts.Length != 4)
@@ -45,14 +47,33 @@ namespace tool_backup
             }
 
             var baseIp = $"{parts[0]}.{parts[1]}.{parts[2]}.";
-
+            var totalIps = 255;
             var tasks = new List<Task>();
             var scannedIps = new HashSet<string>();
 
             dgvManager.Clear();
-            SemaphoreSlim semaphore = new SemaphoreSlim(51);
 
-            for (int i = 0; i < 255; i++)
+            SemaphoreSlim semaphore = new SemaphoreSlim(51);
+            int completedTasks = 0;
+
+            progress.Invoke(new Action(() => progress.Value = 0));
+            progress.Maximum = totalIps;
+
+
+            var progressTask = Task.Run(() =>
+            {
+                while (completedTasks < totalIps)
+                {
+                    progress.Invoke(new Action(() =>
+                    {
+                        progress.Value = (int)((double)completedTasks / totalIps * progress.Maximum);
+                    }));
+
+                    Thread.Sleep(100);
+                }
+            });
+
+            for (int i = 0; i < totalIps; i++)
             {
                 string currentIp = baseIp + (i + 1);
 
@@ -70,11 +91,10 @@ namespace tool_backup
                     {
                         if (await PingIpAsync(currentIp))
                         {
-                            string macAddress =     "";
+                            string macAddress = "";
                             string macAddressEth0 = "";
                             string sudoPassword = "Lumivn274@aihubcamera";
 
-                            //handle MAC
                             using (var client = new ssh(currentIp, usr, keypath, passphare))
                             {
                                 if (client.Connect())
@@ -85,16 +105,12 @@ namespace tool_backup
                                         {
                                             macAddressEth0 = client.ExecuteCommand("cat /sys/class/net/eth0/address");
                                             macAddress = GetMacAddress(currentIp);
-
-                                            //handle Ip
                                             ipGet = IsSameText(macAddressEth0.Trim(), macaddr) ? currentIp : ipGet;
                                         }
                                         else
                                         {
                                             macAddressEth0 = client.ExecuteCommand($"echo \"{sudoPassword}\" | sudo -S cat /sys/class/net/eth0/address");
                                             macAddress = GetMacAddress(currentIp);
-
-                                            //handle Ip
                                             ipGet = IsSameText(macAddressEth0.Trim(), macaddr) ? currentIp : ipGet;
                                         }
                                     }
@@ -104,6 +120,7 @@ namespace tool_backup
                                     }
                                 }
                             }
+
                             dgvManager.AddRow(currentIp, macAddress, macAddressEth0);
                         }
                         else
@@ -118,27 +135,33 @@ namespace tool_backup
                     finally
                     {
                         semaphore.Release();
+                        Interlocked.Increment(ref completedTasks);
                     }
                 }));
             }
+
             try
             {
                 await Task.WhenAll(tasks);
+
                 if (!string.IsNullOrEmpty(ipGet))
                 {
-                    MessageBox.Show($"Địa chỉ ip của mac : {macaddr} là {ipGet}\n Nhấn \"Connect\" để tạo kết nối");
+                    MessageBox.Show($"Địa chỉ IP của MAC: {macaddr} là {ipGet}\n Nhấn \"Connect\" để tạo kết nối");
                 }
                 else
                 {
-                    MessageBox.Show($"Không tìm thấy ip");
+                    MessageBox.Show("Không tìm thấy IP");
                 }
-                
             }
             catch (Exception)
             {
                 MessageBox.Show("Error Scanner");
             }
+            await progressTask;
         }
+
+
+
 
         public string get_ip_scan_succesfully()
         {
