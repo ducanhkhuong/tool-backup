@@ -4,11 +4,11 @@ using System.Windows.Forms;
 
 namespace tool_backup
 {
-    public class DataGridViewManager
+    public class datagridview
     {
         private DataGridView dataGridView;
 
-        public DataGridViewManager(DataGridView dgv)
+        public datagridview(DataGridView dgv)
         {
             dataGridView = dgv;
             InitializeDataGridView();
@@ -19,24 +19,24 @@ namespace tool_backup
             dataGridView.ColumnCount = 5;
             dataGridView.Columns[0].Name = "IP";
             dataGridView.Columns[1].Name = "MAC";
-            dataGridView.Columns[2].Name = "NAME";
-            dataGridView.Columns[3].Name = "";
+            dataGridView.Columns[2].Name = "MAC-eth0";
+            dataGridView.Columns[3].Name = "NAME";
             dataGridView.Columns[4].Name = "";
             dataGridView.AllowUserToAddRows = false;
         }
 
-        public void AddRow(string ip, string mac, string hostname)
+        public void AddRow(string ip, string mac, string mac_eth0)
         {
             if (dataGridView.InvokeRequired)
             {
                 dataGridView.Invoke((MethodInvoker)delegate
                 {
-                    dataGridView.Rows.Add(ip, mac, hostname);
+                    dataGridView.Rows.Add(ip, mac , mac_eth0);
                 });
             }
             else
             {
-                dataGridView.Rows.Add(ip, mac, hostname);
+                dataGridView.Rows.Add(ip, mac, mac_eth0);
             }
         }
 
@@ -62,7 +62,7 @@ namespace tool_backup
             searchText = searchText.ToLower();
             foreach (DataGridViewRow row in dataGridView.Rows)
             {
-                string macAddress = row.Cells[1].Value?.ToString().ToLower();
+                string macAddress = row.Cells[2].Value?.ToString().ToLower();
                 if (!string.IsNullOrEmpty(macAddress) && macAddress.Contains(searchText))
                 {
                     row.Visible = true;

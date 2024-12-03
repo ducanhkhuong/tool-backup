@@ -6,7 +6,7 @@ using System.Windows.Forms;
 
 namespace tool_backup
 {
-    public class TreeViewManager
+    public class treeview
     {
         private TreeView treeView;
         private TextBox displayTextBox;
@@ -14,7 +14,7 @@ namespace tool_backup
         private string var_download_log;
         private string var_download_db;
 
-        public TreeViewManager(TreeView treeView, TextBox displayTextBox, Action<string> updateFormVariable)
+        public treeview(TreeView treeView, TextBox displayTextBox, Action<string> updateFormVariable)
         {
             this.treeView = treeView;
             this.displayTextBox = displayTextBox;

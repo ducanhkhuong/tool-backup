@@ -8,7 +8,6 @@ using Newtonsoft.Json;
 
 namespace tool_backup
 {
-    // Class ComboBoxItem
     public class ComboBoxItem
     {
         public string DisplayText { get; }
@@ -26,12 +25,12 @@ namespace tool_backup
         }
     }
 
-    // Class OptionManager
-    public class OptionManager
+ 
+    public class option
     {
         private List<ComboBoxItem> items;
 
-        public OptionManager()
+        public option()
         {
             items = new List<ComboBoxItem>();
         }
@@ -52,7 +51,7 @@ namespace tool_backup
         }
     }
 
-    // Class Config
+
     public class DeviceConfig
     {
         public string username { get; set; }
@@ -64,7 +63,7 @@ namespace tool_backup
         public string start { get; set; }
     }
 
-    // Class Config
+
     public class Config
     {
         [JsonProperty("MT7688")]
@@ -77,7 +76,7 @@ namespace tool_backup
         public DeviceConfig AI_V3 { get; set; }
     }
 
-    // Class JsonManager
+
     public class JsonManager
     {
         private string filePath;

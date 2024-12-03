@@ -6,7 +6,7 @@ using System.IO;
 
 namespace tool_backup
 {
-    public class SCPClientManager
+    public class scp
     {
         //not key
         private string host_notkey;
@@ -20,7 +20,7 @@ namespace tool_backup
         private string passphrase;
 
         
-        public SCPClientManager(string host_notkey, string username_notkey, string password_notkey)
+        public scp(string host_notkey, string username_notkey, string password_notkey)
         {
             this.host_notkey = host_notkey;
             this.username_notkey = username_notkey;
@@ -28,7 +28,7 @@ namespace tool_backup
         }
 
         
-        public SCPClientManager(string host, string username, string keyFilePath, string passphrase)
+        public scp(string host, string username, string keyFilePath, string passphrase)
         {
             this.host = host;
             this.username = username;

@@ -6,7 +6,7 @@ using System;
 
 namespace tool_backup
 {
-    public class SSHClientManager
+    public class ssh : IDisposable
     {
         private SshClient client;
 
@@ -21,9 +21,11 @@ namespace tool_backup
         private string keyFilePath;
         private string passphrase;
 
+        //giao diện giải phóng tài nguyên
+        private bool _disposed = false;
 
         // kết nối khi có key
-        public SSHClientManager(string ip, string username, string keyFilePath, string passphrase)
+        public ssh(string ip, string username, string keyFilePath, string passphrase)
         {
             this.ip = ip;
             this.username = username;
@@ -41,7 +43,7 @@ namespace tool_backup
 
 
         // kết nối khi không có key
-        public SSHClientManager(string ip_notkey, string username_notkey, string password_notkey)
+        public ssh(string ip_notkey, string username_notkey, string password_notkey)
         {
             this.ip_notkey       = ip_notkey;
             this.username_notkey = username_notkey;
@@ -54,6 +56,7 @@ namespace tool_backup
             this.client = new SshClient(connectionInfo);
         }
 
+        //kết nối
         public bool Connect()
         {
             try
@@ -67,6 +70,7 @@ namespace tool_backup
             }
         }
 
+        //ngắt kết nối
         public void Disconnect()
         {
             if (client != null && client.IsConnected)
@@ -75,20 +79,33 @@ namespace tool_backup
             }
         }
 
-
+        //thực thi Ex
         public string ExecuteCommand(string commandText)
         {
-            if (client != null && client.IsConnected)
+            if (client == null)
+            {
+                return "ExecuteCommand failed: client is null";
+            }
+
+            if (!client.IsConnected)
+            {
+                return "ExecuteCommand failed: client is not connected";
+            }
+
+            try
             {
                 var command = client.CreateCommand(commandText);
                 command.Execute();
                 return command.Result;
             }
-            return "ExecuteCommand failed";
+            catch (Exception ex)
+            {
+                return $"ExecuteCommand failed: {ex.Message}";
+            }
         }
 
 
-        //CMD OUTPUT
+        //cmd output
         public void ExecuteCommand(string commandText, Action<string> logAction)
         {
             if (client != null && client.IsConnected)
@@ -113,6 +130,51 @@ namespace tool_backup
         }
 
 
+        //check connect
         public bool IsConnected => client != null && client.IsConnected;
+
+
+        //list directory
+        public void ListDirectory(string remoteDirectory)
+        {
+            try
+            {
+                if (client.IsConnected)
+                {
+                    var cmd = client.CreateCommand($"ls -la {remoteDirectory}");
+                    var result = cmd.Execute();
+                    Console.WriteLine(result);
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error listing directory via SSH: {ex.Message}");
+            }
+        }
+
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed)
+            {
+                if (disposing)
+                {
+                    ;
+                }
+                _disposed = true;
+            }
+        }
+
+
+        ~ssh()
+        {
+            Dispose(false);
+        }
     }
 }
