@@ -33,31 +33,31 @@ namespace tool_backup
         private void InitializeTreeView()
         {
             TreeNode nodeA = new TreeNode("1.Upload");
-                TreeNode nodeA1 = new TreeNode("DataBase");
+            TreeNode nodeA1 = new TreeNode("DataBase");
 
             TreeNode nodeB = new TreeNode("2.Download");
-                TreeNode nodeB1 = new TreeNode("LogFile");
-                nodeB1.Nodes.Add(new TreeNode("hcg1.log")                   { Tag = var_download_log + "hcg1.log" });
-                nodeB1.Nodes.Add(new TreeNode("PM.log")                     { Tag = var_download_log + "PM.log" });
-                nodeB1.Nodes.Add(new TreeNode("bluetooth.log")              { Tag = var_download_log + "bluetooth.log" });
-                nodeB1.Nodes.Add(new TreeNode("io-service.log")             { Tag = var_download_log + "io-service.log" });
-                nodeB1.Nodes.Add(new TreeNode("ip.log")                     { Tag = var_download_log + "ip.log" });
-                nodeB1.Nodes.Add(new TreeNode("network-service.log")        { Tag = var_download_log + "network-service.log" });
-                nodeB1.Nodes.Add(new TreeNode("ota.log")                    { Tag = var_download_log + "ota.log" });
-                nodeB1.Nodes.Add(new TreeNode("zigbee.log")                 { Tag = var_download_log + "zigbee.log" });
-                nodeB1.Nodes.Add(new TreeNode("activator-client.log(V2-V3)"){ Tag = var_download_log + "activator-client.log"});
-                nodeB1.Nodes.Add(new TreeNode("aibox.log(V2-V3)")           { Tag = var_download_log + "aibox.log" });
-                nodeB1.Nodes.Add(new TreeNode("bluesea-edge.log (V2-V3)")   { Tag = var_download_log + "bluesea-edge.log" });
-                nodeB1.Nodes.Add(new TreeNode("dnet.log (V2-V3)")           { Tag = var_download_log + "dnet.log" });
-                nodeB1.Nodes.Add(new TreeNode("hc-module.log (V2-V3)")      { Tag = var_download_log + "hc-module.log" });
-                nodeB1.Nodes.Add(new TreeNode("io-manager.log (V2-V3)")     { Tag = var_download_log + "io-manager.log" });
-                nodeB1.Nodes.Add(new TreeNode("process-manager.log (V2-V3)") { Tag = var_download_log + "process-manager.log" });
-                nodeB1.Nodes.Add(new TreeNode("relay-agent.log (V2-V3)")      { Tag = var_download_log + "relay-agent.log" });
-                nodeB1.Nodes.Add(new TreeNode("streaming-module.log (V2-V3)") { Tag = var_download_log + "streaming-module.log" });
-                nodeB1.Nodes.Add(new TreeNode("updater.log (V2-V3)")           { Tag = var_download_log + "updater.log" });
-            
+            TreeNode nodeB1 = new TreeNode("LogFile");
+            nodeB1.Nodes.Add(new TreeNode("hcg1.log") { Tag = var_download_log + "hcg1.log" });
+            nodeB1.Nodes.Add(new TreeNode("PM.log") { Tag = var_download_log + "PM.log" });
+            nodeB1.Nodes.Add(new TreeNode("bluetooth.log") { Tag = var_download_log + "bluetooth.log" });
+            nodeB1.Nodes.Add(new TreeNode("io-service.log") { Tag = var_download_log + "io-service.log" });
+            nodeB1.Nodes.Add(new TreeNode("ip.log") { Tag = var_download_log + "ip.log" });
+            nodeB1.Nodes.Add(new TreeNode("network-service.log") { Tag = var_download_log + "network-service.log" });
+            nodeB1.Nodes.Add(new TreeNode("ota.log") { Tag = var_download_log + "ota.log" });
+            nodeB1.Nodes.Add(new TreeNode("zigbee.log") { Tag = var_download_log + "zigbee.log" });
+            nodeB1.Nodes.Add(new TreeNode("activator-client.log(V2-V3)") { Tag = var_download_log + "activator-client.log" });
+            nodeB1.Nodes.Add(new TreeNode("aibox.log(V2-V3)") { Tag = var_download_log + "aibox.log" });
+            nodeB1.Nodes.Add(new TreeNode("bluesea-edge.log (V2-V3)") { Tag = var_download_log + "bluesea-edge.log" });
+            nodeB1.Nodes.Add(new TreeNode("dnet.log (V2-V3)") { Tag = var_download_log + "dnet.log" });
+            nodeB1.Nodes.Add(new TreeNode("hc-module.log (V2-V3)") { Tag = var_download_log + "hc-module.log" });
+            nodeB1.Nodes.Add(new TreeNode("io-manager.log (V2-V3)") { Tag = var_download_log + "io-manager.log" });
+            nodeB1.Nodes.Add(new TreeNode("process-manager.log (V2-V3)") { Tag = var_download_log + "process-manager.log" });
+            nodeB1.Nodes.Add(new TreeNode("relay-agent.log (V2-V3)") { Tag = var_download_log + "relay-agent.log" });
+            nodeB1.Nodes.Add(new TreeNode("streaming-module.log (V2-V3)") { Tag = var_download_log + "streaming-module.log" });
+            nodeB1.Nodes.Add(new TreeNode("updater.log (V2-V3)") { Tag = var_download_log + "updater.log" });
+
             TreeNode nodeB2 = new TreeNode("DataBase");
-                nodeB2.Nodes.Add(new TreeNode("newhc.db") {Tag = var_download_db});
+            nodeB2.Nodes.Add(new TreeNode("DataBase") { Tag = var_download_db });
 
             nodeA.Nodes.Add(nodeA1);
             nodeB.Nodes.Add(nodeB1);

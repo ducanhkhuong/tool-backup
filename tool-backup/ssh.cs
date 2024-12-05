@@ -38,14 +38,14 @@ namespace tool_backup
                 new PrivateKeyAuthenticationMethod(username, keyFiles)
             };
             ConnectionInfo connectionInfo = new ConnectionInfo(ip, username, authMethods);
-            this.client = new SshClient(connectionInfo);     
+            this.client = new SshClient(connectionInfo);
         }
 
 
         // kết nối khi không có key
         public ssh(string ip_notkey, string username_notkey, string password_notkey)
         {
-            this.ip_notkey       = ip_notkey;
+            this.ip_notkey = ip_notkey;
             this.username_notkey = username_notkey;
             this.password_notkey = password_notkey;
             AuthenticationMethod[] authMethods = new AuthenticationMethod[]
@@ -79,7 +79,7 @@ namespace tool_backup
             }
         }
 
-        //thực thi Ex
+        //thực thi ExcuteCommand
         public string ExecuteCommand(string commandText)
         {
             if (client == null)
@@ -132,26 +132,6 @@ namespace tool_backup
 
         //check connect
         public bool IsConnected => client != null && client.IsConnected;
-
-
-        //list directory
-        public void ListDirectory(string remoteDirectory)
-        {
-            try
-            {
-                if (client.IsConnected)
-                {
-                    var cmd = client.CreateCommand($"ls -la {remoteDirectory}");
-                    var result = cmd.Execute();
-                    Console.WriteLine(result);
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Error listing directory via SSH: {ex.Message}");
-            }
-        }
-
 
         public void Dispose()
         {

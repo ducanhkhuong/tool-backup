@@ -45,7 +45,7 @@ namespace tool_backup
         //FORM-LOAD
         private void Form1_Load(object sender, EventArgs e)
         {
-            manager.form1_load(Log_app, "LUMI-OS", "version 1.0.0");
+            manager.form1_load(Log_app, "Team : OS", "Version : 1.0.0");
             manager.autoload_disconected(ConnectDevice_Status);
         }
 
@@ -56,7 +56,7 @@ namespace tool_backup
             if (selectedItem != null)
             {
                 string selectedValue = optionManager.GetSelectedValue(selectedItem);
-                manager.LoadConfig("setting.json", selectedValue, ConnectDevice_Username, ConnectDevice_Passphare, Device_Download);
+                manager.LoadConfig("setting.json", selectedValue, ConnectDevice_Username, ConnectDevice_Passphare, Device_Download, Log_app);
             }
         }
 
@@ -75,7 +75,7 @@ namespace tool_backup
         //OPEN-KEY-FILE
         private void ConnectDevice_CheckKeyfile_CheckedChanged(object sender, EventArgs e)
         {
-            manager.get_key_file(ConnectDevice_CheckKeyfile, ConnectDevice_KeyFile);
+            manager.get_key_file(ConnectDevice_CheckKeyfile, ConnectDevice_KeyFile,Log_app);
         }
 
         //DOWNLOAD
@@ -93,7 +93,7 @@ namespace tool_backup
         //SCAN IP & NETWORK
         private void Scan_btn_network_Click(object sender, EventArgs e)
         {
-            manager.scan_ip_mac(Scan_IP_textbox, Scan_Search, ConnectDevice_KeyFile, progressBar1); 
+            manager.scan_ip_mac(Scan_IP_textbox, Scan_Search, ConnectDevice_KeyFile, progressBar1, Log_app, progressbar_value);
         }
 
         //SEARCH BY MAC
@@ -101,17 +101,23 @@ namespace tool_backup
         {
             manager.search_by_mac(Scan_Search);
         }
-        
+
         //CONNECT
         private void Btn_Connect_Click(object sender, EventArgs e)
         {
-            manager.connect(ConnectDevice_CheckIp,ConnectDevice_Status, ConnectDevice_Ip); 
+            manager.connect(ConnectDevice_CheckIp, ConnectDevice_Status, ConnectDevice_Ip, Log_app);
         }
 
         //DISCONECT
         private void Btn_Exit_Click(object sender, EventArgs e)
         {
-            manager.disconnect(ConnectDevice_Status);
+            manager.disconnect(ConnectDevice_Status, Log_app);
+        }
+
+        //EXIT FORM
+        private void Form1_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            manager.exit(e,Log_app);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace tool_backup
         private string keyFilePath;
         private string passphrase;
 
-        
+        //scp không cần key
         public scp(string host_notkey, string username_notkey, string password_notkey)
         {
             this.host_notkey = host_notkey;
@@ -27,7 +27,7 @@ namespace tool_backup
             this.password_notkey = password_notkey;
         }
 
-        
+        //scp key
         public scp(string host, string username, string keyFilePath, string passphrase)
         {
             this.host = host;

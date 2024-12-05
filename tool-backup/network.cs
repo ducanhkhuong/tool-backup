@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Net.NetworkInformation;
 using System.Net.Sockets;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,12 +14,11 @@ using System.Windows.Forms;
 
 namespace tool_backup
 {
-
     public class network
     {
         public datagridview dgvManager;
 
-        public string ipGet {  get; set; }
+        public string ipGet { get; set; }
 
         public network(DataGridView dataGridView)
         {
@@ -30,36 +30,41 @@ namespace tool_backup
             return string.Equals(text1, text2, StringComparison.OrdinalIgnoreCase);
         }
 
-
-        public void ScanNetworks(string ipRange ,string macaddr, string usr , string keypath , string passphare,ProgressBar progress)
+        public bool IsValidIP(string ipAddress)
         {
-            ScanIpRange(ipRange,macaddr,usr,keypath,passphare, progress);
+            return IPAddress.TryParse(ipAddress, out _);
         }
 
+        public bool IsValidMAC(string macAddress)
+        {
+            string pattern = @"^([0-9A-Fa-f]{2}[:-]){5}([0-9A-Fa-f]{2})$";
+            return Regex.IsMatch(macAddress, pattern);
+        }
 
-        private async void ScanIpRange(string ipRange, string macaddr, string usr, string keypath, string passphare, ProgressBar progress)
+        public void ScanNetworks(string ipRange, string macaddr, string usr, string keypath, string passphare, ProgressBar progress, Label label)
+        {
+            ScanIpRange(ipRange, macaddr, usr, keypath, passphare, progress, label);
+        }
+
+        private async void ScanIpRange(string ipRange, string macaddr, string usr, string keypath, string passphare, ProgressBar progress, Label label)
         {
             var parts = ipRange.Split('.');
-            if (parts.Length != 4)
-            {
-                MessageBox.Show("Invalid IP range format!");
-                return;
-            }
-
             var baseIp = $"{parts[0]}.{parts[1]}.{parts[2]}.";
             var totalIps = 255;
             var tasks = new List<Task>();
             var scannedIps = new HashSet<string>();
 
             dgvManager.Clear();
-
             SemaphoreSlim semaphore = new SemaphoreSlim(51);
+
             int completedTasks = 0;
+            progress.Invoke(new Action(() =>
+            {
+                progress.Value = 0;
+                label.Text = "Tiến trình : 0/255";
+            }));
 
-            progress.Invoke(new Action(() => progress.Value = 0));
             progress.Maximum = totalIps;
-
-
             var progressTask = Task.Run(() =>
             {
                 while (completedTasks < totalIps)
@@ -67,9 +72,10 @@ namespace tool_backup
                     progress.Invoke(new Action(() =>
                     {
                         progress.Value = (int)((double)completedTasks / totalIps * progress.Maximum);
+                        label.Text = $"Tiến trình : {progress.Value}/{progress.Maximum}";
                     }));
 
-                    Thread.Sleep(100);
+                    Thread.Sleep(50);
                 }
             });
 
@@ -116,7 +122,7 @@ namespace tool_backup
                                     }
                                     catch (Exception ex)
                                     {
-                                        Console.WriteLine($"Error executing command on {currentIp}: {ex.Message}");
+                                        Console.WriteLine($"Lỗi thực thi câu lệnh trên {currentIp}: {ex.Message}");
                                     }
                                 }
                             }
@@ -130,7 +136,7 @@ namespace tool_backup
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Error scanning IP {currentIp}: {ex.Message}");
+                        Console.WriteLine($"Lỗi scanning ip {currentIp}: {ex.Message}");
                     }
                     finally
                     {
@@ -155,12 +161,16 @@ namespace tool_backup
             }
             catch (Exception)
             {
-                MessageBox.Show("Error Scanner");
+                MessageBox.Show("Lỗi scanner");
             }
+
             await progressTask;
+            progress.Invoke(new Action(() =>
+            {
+                progress.Value = 0;
+                label.Text = "Tiến trình : 0/255";
+            }));
         }
-
-
 
 
         public string get_ip_scan_succesfully()

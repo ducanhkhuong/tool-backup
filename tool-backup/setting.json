@@ -4,10 +4,10 @@
     "username": "root",
     "key": "LumiVn@2021",
     "pathhome": "/root/",
-    "pathDB": "/hcg1/newhc.db",
+    "pathDB": "/hcg1/hc_database.tar.gz",
     "pathlog": "/tmp/log/",
     "start": "/etc/init.d/processmanager start",
-    "stop":  "/etc/init.d/processmanager stop"
+    "stop": "/etc/init.d/processmanager stop"
   },
 
   "AI-V2": {
@@ -17,7 +17,7 @@
     "pathDB": "/var/cache/smarthome/hcg1/newhc.db",
     "pathlog": "/smarthome/log/",
     "start": "systemctl start process-manager.service",
-    "stop": "systemctl stop process-manager.service"
+    "stop":  "systemctl stop process-manager.service"
   },
 
   "AI-V3": {
@@ -27,6 +27,6 @@
     "pathDB": "/var/cache/smarthome/hcg1/newhc.db",
     "pathlog": "/smarthome/log/",
     "start": "systemctl start process-manager.service",
-    "stop": "systemctl stop process-manager.service"
+    "stop":  "systemctl stop process-manager.service"
   }
 }

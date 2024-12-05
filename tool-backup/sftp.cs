@@ -102,30 +102,6 @@ namespace tool_backup
             }
         }
 
-
-        //public void ListDirectory(string remoteDirectory)
-        //{
-        //    try
-        //    {
-        //        var files = sftpClient.ListDirectory(remoteDirectory);
-        //        if (files == null || !files.Any())
-        //        {
-        //            Console.WriteLine("No files found or unable to list directory.");
-        //        }
-        //        else
-        //        {
-        //            foreach (var file in files)
-        //            {
-        //                Console.WriteLine($"{file.Name} - {file.Length} bytes");
-        //            }
-        //        }
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        Console.WriteLine($"Error listing directory: {ex.Message}");
-        //    }
-        //}
-
         public List<Renci.SshNet.Sftp.ISftpFile> ListDirectory(string path)
         {
             if (sftpClient.IsConnected)
