@@ -1,28 +1,7 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "E:\\test C#\\tool-backup\\",
-  "Documents": [
-    {
-      "AbsoluteMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|e:\\test c#\\tool-backup\\tool-backup\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|solutionrelative:tool-backup\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|E:\\test C#\\tool-backup\\tool-backup\\setting.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|solutionrelative:tool-backup\\setting.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|E:\\test C#\\tool-backup\\tool-backup\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|solutionrelative:tool-backup\\logmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|e:\\test c#\\tool-backup\\tool-backup\\jsonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|solutionrelative:tool-backup\\jsonmanager.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|E:\\test C#\\tool-backup\\tool-backup\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
-      "RelativeMoniker": "D:0:0:{A69BA0C9-F772-4AB6-A0BB-0FEF65FBCB93}|tool-backup\\tool-backup.csproj|solutionrelative:tool-backup\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
-    }
-  ],
+  "Documents": [],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -30,73 +9,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": -1,
           "Children": [
             {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Form1.cs",
-              "DocumentMoniker": "E:\\test C#\\tool-backup\\tool-backup\\Form1.cs",
-              "RelativeDocumentMoniker": "tool-backup\\Form1.cs",
-              "ToolTip": "E:\\test C#\\tool-backup\\tool-backup\\Form1.cs",
-              "RelativeToolTip": "tool-backup\\Form1.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAvwCYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T09:43:59.597Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
             },
             {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "setting.json",
-              "DocumentMoniker": "E:\\test C#\\tool-backup\\tool-backup\\setting.json",
-              "RelativeDocumentMoniker": "tool-backup\\setting.json",
-              "ToolTip": "E:\\test C#\\tool-backup\\tool-backup\\setting.json",
-              "RelativeToolTip": "tool-backup\\setting.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-10-23T11:41:27.993Z",
-              "IsPinned": true,
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "LogManager.cs",
-              "DocumentMoniker": "E:\\test C#\\tool-backup\\tool-backup\\LogManager.cs",
-              "RelativeDocumentMoniker": "tool-backup\\LogManager.cs",
-              "ToolTip": "E:\\test C#\\tool-backup\\tool-backup\\LogManager.cs",
-              "RelativeToolTip": "tool-backup\\LogManager.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T04:58:21.811Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "JsonManager.cs",
-              "DocumentMoniker": "E:\\test C#\\tool-backup\\tool-backup\\JsonManager.cs",
-              "RelativeDocumentMoniker": "tool-backup\\JsonManager.cs",
-              "ToolTip": "E:\\test C#\\tool-backup\\tool-backup\\JsonManager.cs",
-              "RelativeToolTip": "tool-backup\\JsonManager.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-29T04:27:54.524Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Form1.cs [Design]",
-              "DocumentMoniker": "E:\\test C#\\tool-backup\\tool-backup\\Form1.cs",
-              "RelativeDocumentMoniker": "tool-backup\\Form1.cs",
-              "ToolTip": "E:\\test C#\\tool-backup\\tool-backup\\Form1.cs [Design]",
-              "RelativeToolTip": "tool-backup\\Form1.cs [Design]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-10-11T09:34:40.221Z",
-              "EditorCaption": " [Design]"
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
             }
           ]
         }
