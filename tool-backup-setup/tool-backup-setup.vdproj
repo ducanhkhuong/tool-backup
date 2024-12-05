@@ -399,6 +399,14 @@
             "PrerequisitesLocation" = "2:1"
             "Url" = "8:"
             "ComponentsUrl" = "8:"
+                "Items"
+                {
+                    "{EDC2488A-8267-493A-A98E-7D9C3B36CDF3}:.NETFramework,Version=v4.7.2"
+                    {
+                    "Name" = "8:Microsoft .NET Framework 4.7.2 (x86 and x64)"
+                    "ProductCode" = "8:.NETFramework,Version=v4.7.2"
+                    }
+                }
             }
         }
         "Release"
@@ -959,9 +967,9 @@
         "Product"
         {
         "Name" = "8:Microsoft Visual Studio"
-        "ProductName" = "8:tool-backup-setup"
+        "ProductName" = "8:lumi-os-tool-setup"
         "ProductCode" = "8:{B9298100-058B-4644-98A9-F3ABF3738D46}"
-        "PackageCode" = "8:{0A2EC995-0FD2-424C-B4BD-668DEEAF4EA5}"
+        "PackageCode" = "8:{907F57FC-8793-4896-BEB0-2EFBF781B089}"
         "UpgradeCode" = "8:{68A473DC-DB86-4BC4-8CD9-488837746BE9}"
         "AspNetVersion" = "8:2.0.50727.0"
         "RestartWWWService" = "11:FALSE"
@@ -969,12 +977,12 @@
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
         "ProductVersion" = "8:1.0.0"
-        "Manufacturer" = "8:LUMI-OS"
+        "Manufacturer" = "8:lumi-tool"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
-        "Title" = "8:LUMI-OS-Tool"
+        "Title" = "8:lumi-tool"
         "Subject" = "8:"
-        "ARPCONTACT" = "8:LUMI-OS"
+        "ARPCONTACT" = "8:os"
         "Keywords" = "8:"
         "ARPCOMMENTS" = "8:"
         "ARPURLINFOABOUT" = "8:"
@@ -1083,7 +1091,7 @@
         {
             "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_8A43FF91808F45119AD27BD45A6B80D6"
             {
-            "Name" = "8:OS-Tool"
+            "Name" = "8:lumi-tool"
             "Arguments" = "8:"
             "Description" = "8:"
             "ShowCmd" = "3:1"
